@@ -1,1 +1,0 @@
-# zd-ratings-and-reviews-page
