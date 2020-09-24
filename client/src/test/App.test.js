@@ -10,15 +10,23 @@ configure({ adapter: new Adapter() })
 describe('App', () => {
 
     it('renders the page', () => {
-      const wrapper = mount(<App />);
-      expect(wrapper).toMatchSnapshot();
+        const wrapper = shallow(<App />);
+        expect(wrapper).toMatchSnapshot();
     });
-  });
+});
 
 describe('App', () => {
 
     it('has a button with className button-large', () => {
-      const wrapper = mount(<App />);
-      expect(wrapper.find('.button-large')).toBeDefined;
+        const wrapper = mount(<App />);
+        expect(wrapper.find('.button-large')).toBeDefined;
     });
-  });
+});
+
+/* describe('App', () => {
+
+    it('has a button with className button-large', () => {
+        const wrapper = mount(<App />);
+        expect(wrapper.find('.button-large')).toBeDefined;
+    });
+}); */
