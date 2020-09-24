@@ -4,7 +4,7 @@ import { createGlobalStyle } from 'styled-components';
 //  (background color, border color)
 //  (font family, size, color)
 
-export const GlobalStyle = createGlobalStyle`
+const GlobalStyle = createGlobalStyle`
 
   h1 {
     font-family: 'Roboto', 'sans-serif';
@@ -43,6 +43,4 @@ export const GlobalStyle = createGlobalStyle`
   }
 `;
 
-
-
-
+export default GlobalStyle;

@@ -1,5 +1,5 @@
-import React, { Component } from 'react';
-import { GlobalStyle } from './globalStyle.js';
+import React from 'react';
+import GlobalStyle from './globalStyle';
 
 class App extends React.PureComponent {
   render() {
@@ -9,7 +9,7 @@ class App extends React.PureComponent {
         <body>
           <h1> Dangerzone. </h1>
           <p> Long Live the Scrumdog Billionaires </p>
-          <button> Button Large </button>
+          <button type="submit"> Button Large </button>
         </body>
       </>
     );
