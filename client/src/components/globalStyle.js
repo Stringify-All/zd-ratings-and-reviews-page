@@ -1,9 +1,5 @@
 import { createGlobalStyle } from 'styled-components';
 
-// @//import styled, { injectGlobal } from 'styled-components';
-// import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap')
-//@import url('https://fonts.googleapis.com/css?family=Source+Sans+Pro&display=swap');
-
 // main page elements
 //  (background color, border color)
 //  (font family, size, color)

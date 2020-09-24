@@ -1,10 +1,7 @@
 import React, { Component } from 'react';
 import { GlobalStyle } from './globalStyle.js';
 
-
-class App extends Component {
-
-
+class App extends React.PureComponent {
   render() {
     return (
       <>
@@ -15,7 +12,7 @@ class App extends Component {
           <button> Button Large </button>
         </body>
       </>
-    )
+    );
   }
 }
 
