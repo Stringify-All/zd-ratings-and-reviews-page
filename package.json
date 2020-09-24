@@ -3,6 +3,10 @@
   "version": "1.0.0",
   "description": "Product detail service component for Thr3ds. ",
   "main": "index.js",
+  "jest": {
+    "verbose": true,
+    "setupFilesAfterEnv": ["<rootDir>/client/src/test/App.test.js"]
+  },
   "scripts": {
     "test": "jest",
     "build": "webpack -d --watch",
@@ -28,7 +32,6 @@
     "bluebird": "^3.7.2",
     "body-parser": "^1.19.0",
     "concurrently": "^5.3.0",
-    "enzyme": "^3.11.0",
     "eslint": "^7.9.0",
     "eslint-config-airbnb": "^18.2.0",
     "eslint-plugin-jsx-a11y": "^6.3.1",
@@ -48,9 +51,13 @@
     "babel-core": "^6.26.3",
     "babel-jest": "^26.3.0",
     "babel-loader": "^8.1.0",
+    "babel-preset-airbnb": "^5.0.0",
     "babel-preset-env": "^1.7.0",
     "babel-preset-react": "^6.24.1",
+    "enzyme": "^3.11.0",
+    "enzyme-adapter-react-16": "^1.15.5",
     "html-webpack-plugin": "^4.5.0",
+    "react-addons-test-utils": "^15.6.2",
     "webpack": "^4.44.2",
     "webpack-cli": "^3.3.12",
     "webpack-dev-server": "^3.11.0"
