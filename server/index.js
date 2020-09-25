@@ -4,7 +4,6 @@ const bodyParser = require('body-parser');
 
 const app = express();
 const PORT = 9003;
-const helpers = require('./api-helper.js');
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));

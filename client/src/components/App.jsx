@@ -4,7 +4,8 @@ import ProgressBar from 'react-bootstrap/ProgressBar';
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
-import helpers from '../../../server/api-helper';
+import getReviewForProduct from '../API/GetReviewForProduct';
+import getProductMetadata from '../API/GetProductMetadata';
 import Ratings from './ratings/Ratings.jsx';
 import GlobalStyle from './globalStyle';
 
@@ -14,11 +15,11 @@ const App = () => {
   const [productReview, setProductReview] = useState([]);
 
   useEffect(() => {
-    helpers.getReviewForProduct(product)
+    getReviewForProduct(product)
       .then((data) => setProductReview(data));
-    helpers.getReviewMetadata(product)
+    getProductMetadata(product)
       .then((data) => setMetadata(data));
-  });
+  }, []);
 
   return (
     <div>
