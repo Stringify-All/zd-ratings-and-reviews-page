@@ -4,18 +4,21 @@ import ProgressBar from 'react-bootstrap/ProgressBar';
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
+import helpers from '../../../server/api-helper';
 import Ratings from './ratings/Ratings.jsx';
 import GlobalStyle from './globalStyle';
 
 const App = () => {
+  const [product, setProduct] = useState(2);
   const [metadata, setMetadata] = useState([]);
+  const [productReview, setProductReview] = useState([]);
 
-/*   useEffect(() => {
-    const api = '/:product_id/meta';
-    fetch(api)
-      .then((response) => response.json())
+  useEffect(() => {
+    helpers.getReviewForProduct(product)
+      .then((data) => setProductReview(data));
+    helpers.getReviewMetadata(product)
       .then((data) => setMetadata(data));
-  }); */
+  });
 
   return (
     <div>
