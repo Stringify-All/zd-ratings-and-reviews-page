@@ -1,13 +1,29 @@
-import React from 'react';
-// import ProgressBarEntry from './ProgressBarEntry.jsx';
+import React, { useEffect, useState } from 'react';
+import getAverages from '../../Helpers/GetAverageRecs';
 import StarRatings from './StarRatings.jsx';
 
-const Ratings = () => (
-  <div>
-    <h4>Ratings & Reviews</h4>
-    <StarRatings />
-    <p>100% of reviews recommend this product</p>
-  </div>
-);
+const Ratings = (props) => {
+  const [recommendations, setRecommendations] = useState(`${100}%`);
+
+  useEffect(() => {
+    if (!props.ratingsData.recommended) {
+      setRecommendations(`${100}%`);
+    } else {
+      setRecommendations(`${getAverages(props.ratingsData.recommended)}%`);
+    }
+  });
+
+  return (
+    <div>
+      <h4>Ratings & Reviews</h4>
+      <StarRatings />
+      <p>
+        {recommendations}
+        {' '}
+        of SCRUMDOGS recommend this product
+      </p>
+    </div>
+  );
+};
 
 export default Ratings;
