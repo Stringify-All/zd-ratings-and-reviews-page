@@ -45,9 +45,9 @@ const App = () => {
             </div>
             <br />
           </Col>
-            <Col sm={12} md={6} lg={8}>
-              <Reviews />
-            </Col>
+          <Col sm={12} md={6} lg={8}>
+            <Reviews />
+          </Col>
         </Row>
       </Container>
     </div>
