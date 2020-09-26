@@ -1,7 +1,6 @@
 const getAverages = (recObj) => {
   const sum = recObj[1];
   const total = recObj[0] + recObj[1];
-  console.log(recObj);
   return (Math.floor((sum / total) * 100));
 };
 

@@ -15,7 +15,7 @@ const Ratings = (props) => {
     } else {
       setRecommendations(`${getAverages(props.ratingsData.recommended)}%`);
     }
-  });
+  }, []);
 
   return (
     <div>
