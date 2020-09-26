@@ -3,13 +3,12 @@ import React, { useState, useEffect } from 'react';
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
-import styled from 'styled-components';
-import ProgressBarEntry from './ratings/ProgressBarEntry.jsx';
 import getReviewForProduct from '../API/GetReviewForProduct';
 import getProductMetadata from '../API/GetProductMetadata';
 import Ratings from './ratings/Ratings.jsx';
 import ProgressBarTable from './ratings/ProgressBarTable.jsx';
 import GlobalStyle from './globalStyle';
+import Reviews from './reviews/Reviews.jsx';
 
 const App = () => {
   const [product, setProduct] = useState(2);
@@ -27,6 +26,11 @@ const App = () => {
     <div>
       <GlobalStyle />
       <Container>
+        <div className="my-5">
+          <Col xs={12}>
+            <h4>Ratings & Reviews</h4>
+          </Col>
+        </div>
         <Row>
           <Col sm={12} md={6} lg={4}>
             <div>
@@ -41,6 +45,9 @@ const App = () => {
             </div>
             <br />
           </Col>
+            <Col sm={12} md={6} lg={8}>
+              <Reviews />
+            </Col>
         </Row>
       </Container>
     </div>

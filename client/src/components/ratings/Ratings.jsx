@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import Grid from '@material-ui/core/Grid';
 import Typography from '@material-ui/core/Typography';
-import Paper from '@material-ui/core/Paper';
 import getAverages from '../../Helpers/GetAverageRecs';
 import StarRatings from './StarRatings.jsx';
 import getAverageStarRating from '../../Helpers/GetAverageStarRating';
@@ -23,9 +22,6 @@ const Ratings = (props) => {
   return (
     <div>
       <Grid container spacing={4}>
-        <Grid item xs={12}>
-          <h4>Ratings & Reviews</h4>
-        </Grid>
         <Grid item xs={3}>
           <Typography variant="h2" component="h3">{starRating}</Typography>
         </Grid>
@@ -33,11 +29,13 @@ const Ratings = (props) => {
           <StarRatings averageRating={starRating} />
         </Grid>
         <Grid item xs={12}>
-          <p>
-            {recommendations}
-            {' '}
-            of SCRUMDOGS recommend this product
-          </p>
+          <div className="mb-4">
+            <Typography variant="subtitle2">
+              {recommendations}
+              {' '}
+              of SCRUMDOGS recommend this product
+            </Typography>
+          </div>
         </Grid>
       </Grid>
     </div>

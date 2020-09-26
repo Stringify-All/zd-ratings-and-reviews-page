@@ -2,7 +2,6 @@ import React from 'react';
 import Rating from '@material-ui/lab/Rating';
 import Typography from '@material-ui/core/Typography';
 import Grid from '@material-ui/core/Grid';
-import styled from 'styled-components';
 
 const StarRating = (props) => (
   <div>
