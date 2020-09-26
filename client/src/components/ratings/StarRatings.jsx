@@ -11,7 +11,7 @@ export default function SimpleRating() {
     <div>
       <Grid container />
       <div style={{ padding: 15 }}>
-        <Grid item xs={3} lg={2}>
+        <Grid item xs={2} lg={2}>
           <Rating name="read-only" value={value} readOnly />
         </Grid>
       </div>

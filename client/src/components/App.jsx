@@ -40,7 +40,7 @@ const App = () => {
         {/* <h1> Dangerzone. </h1>
         <p> Long Live the Scrumdog Billionaires </p> */}
         <Row>
-          <Col sm={12} md={4}>
+          <Col sm={12} md={6} lg={4}>
             <div>
               <Col>
                 <Ratings ratingsData={metadata} />
