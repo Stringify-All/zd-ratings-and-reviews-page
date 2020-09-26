@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react';
 import Grid from '@material-ui/core/Grid';
-import { LinearProgress } from '@material-ui/core';
 import getRatingsTotals from '../../Helpers/GetRatingTotals';
 import ProgressBarEntry from './ProgressBarEntry.jsx';
 
