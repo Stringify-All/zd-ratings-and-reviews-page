@@ -26,8 +26,8 @@ const ReviewEntry = (props) => (
       <div className="mt-5">
         <Grid item xs={12} lg={12}>
           <Typography variant="overline">Helpful? --</Typography>
-          <Typography variant="button"> Yes -- </Typography>
-          <Typography variant="button"> No </Typography>
+          <Typography variant="caption"> Yes (9)  | </Typography>
+          <Typography variant="caption"> Report </Typography>
         </Grid>
       </div>
     </Grid>
