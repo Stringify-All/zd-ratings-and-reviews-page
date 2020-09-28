@@ -3,6 +3,7 @@ import React, { useState, useEffect } from 'react';
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
+import CircularProgress from '@material-ui/core/CircularProgress';
 import getReviewForProduct from '../API/GetReviewForProduct';
 import getProductMetadata from '../API/GetProductMetadata';
 import Ratings from './ratings/Ratings.jsx';

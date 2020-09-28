@@ -5,9 +5,11 @@ import Button from '@material-ui/core/Button';
 import { createMuiTheme, makeStyles, ThemeProvider } from '@material-ui/core/styles';
 import theme from '../theme';
 import ReviewsList from './ReviewsList.jsx';
+import SortingDropdown from './SortingDropdown.jsx';
 
 const Reviews = (props) => {
   const [reviews, setReviews] = useState([]);
+  const [sortedBy, setSortedBy] = useState('relevance');
 
   useEffect(() => {
     if (!props.reviewData) {
@@ -18,13 +20,20 @@ const Reviews = (props) => {
     }
   });
 
+  const setDropdownValue = (filter) => {
+    setSortedBy(filter);
+  };
+
   return (
     <div className="mt-2 pl-4">
       <ThemeProvider theme={theme}>
-        <Grid container direction="row" spacing={3}>
+        <Grid container direction="row" spacing={1}>
           <Grid item xs={12}>
             <Typography variant="subtitle1">
-              248 reviews sorted by relevance
+              {reviews.count}
+              {' '}
+              reviews sorted by
+              <SortingDropdown setDropdownValue={setDropdownValue} />
             </Typography>
           </Grid>
           <Grid item xs={12}>
