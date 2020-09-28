@@ -9,7 +9,7 @@ const ReviewsList = (props) => {
     return (
       <Grid>
         {reviewData.map((review) => (
-          <ReviewEntry review={review} />
+          <ReviewEntry key={review.review_id} review={review} />
         ))}
       </Grid>
     );

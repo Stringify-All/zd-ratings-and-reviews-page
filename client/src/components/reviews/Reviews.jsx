@@ -24,6 +24,10 @@ const Reviews = (props) => {
     setSortedBy(filter);
   };
 
+  const addReviewModal = (event) => {
+    console.log('Clicked add review button')
+  }
+
   return (
     <div className="mt-2 pl-4">
       <ThemeProvider theme={theme}>
@@ -45,7 +49,7 @@ const Reviews = (props) => {
             <Button variant="outlined" color="primary">More Reviews</Button>
           </Grid>
           <Grid item xs={6} md={4} lg={3}>
-            <Button variant="outlined" color="primary" oncl>Add review +</Button>
+            <Button variant="outlined" color="primary">Add review +</Button>
           </Grid>
         </Grid>
       </ThemeProvider>
