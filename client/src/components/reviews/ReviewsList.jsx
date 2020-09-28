@@ -5,10 +5,12 @@ import ReviewEntry from './ReviewEntry.jsx';
 
 const ReviewsList = (props) => {
   if (props.reviewData.results !== undefined) {
-    const reviewData = props.reviewData.results
+    const reviewData = props.reviewData.results;
+    const reviewsOnPage = props.reviewsOnPage;
+    const filteredReviewData = reviewData.slice(0, reviewsOnPage);
     return (
       <Grid>
-        {reviewData.map((review) => (
+        {filteredReviewData.map((review) => (
           <ReviewEntry key={review.review_id} review={review} />
         ))}
       </Grid>

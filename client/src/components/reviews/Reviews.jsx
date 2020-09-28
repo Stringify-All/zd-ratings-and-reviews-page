@@ -11,6 +11,7 @@ import sortByFilter from '../../Helpers/SortByFilter';
 const Reviews = (props) => {
   const [reviews, setReviews] = useState([]);
   const [sortedBy, setSortedBy] = useState('relevance');
+  const [reviewsOnPage, setReviewsOnPage] = useState(2);
 
   useEffect(() => {
     if (!props.reviewData) {
@@ -30,6 +31,10 @@ const Reviews = (props) => {
     console.log('Clicked add review button');
   };
 
+  const addReviews = () => {
+    setReviewsOnPage(reviewsOnPage + 2);
+  };
+
   return (
     <div className="mt-2 pl-4">
       <ThemeProvider theme={theme}>
@@ -44,11 +49,11 @@ const Reviews = (props) => {
           </Grid>
           <Grid item xs={12}>
             <div className="my-4">
-              <ReviewsList reviewData={reviews} />
+              <ReviewsList reviewData={reviews} reviewsOnPage={reviewsOnPage} />
             </div>
           </Grid>
           <Grid item xs={6} md={4} lg={3}>
-            <Button variant="outlined" color="primary">More Reviews</Button>
+            <Button variant="outlined" color="primary" onClick={addReviews}>More Reviews</Button>
           </Grid>
           <Grid item xs={6} md={4} lg={3}>
             <Button variant="outlined" color="primary">Add review +</Button>
