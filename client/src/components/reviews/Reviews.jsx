@@ -6,6 +6,7 @@ import { createMuiTheme, makeStyles, ThemeProvider } from '@material-ui/core/sty
 import theme from '../theme';
 import ReviewsList from './ReviewsList.jsx';
 import SortingDropdown from './SortingDropdown.jsx';
+import sortByFilter from '../../Helpers/SortByFilter';
 
 const Reviews = (props) => {
   const [reviews, setReviews] = useState([]);
@@ -22,11 +23,12 @@ const Reviews = (props) => {
 
   const setDropdownValue = (filter) => {
     setSortedBy(filter);
+    setReviews(sortByFilter(filter, reviews.results));
   };
 
   const addReviewModal = (event) => {
-    console.log('Clicked add review button')
-  }
+    console.log('Clicked add review button');
+  };
 
   return (
     <div className="mt-2 pl-4">

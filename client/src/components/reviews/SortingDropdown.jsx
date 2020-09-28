@@ -6,7 +6,7 @@ const SortingDropdown = (props) => {
 
   const setSelector = (event) => {
     setSelected(event.target.innerText);
-    props.setDropdownValue(selected);
+    props.setDropdownValue(event.target.innerText);
   };
 
   return (
