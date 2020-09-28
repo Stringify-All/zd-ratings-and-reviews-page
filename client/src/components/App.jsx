@@ -11,7 +11,7 @@ import GlobalStyle from './globalStyle';
 import Reviews from './reviews/Reviews.jsx';
 
 const App = () => {
-  const [product, setProduct] = useState(2);
+  const [product, setProduct] = useState(4);
   const [metadata, setMetadata] = useState([]);
   const [productReview, setProductReview] = useState([]);
 
@@ -46,7 +46,7 @@ const App = () => {
             <br />
           </Col>
           <Col sm={12} md={6} lg={8}>
-            <Reviews />
+            <Reviews reviewData={productReview} />
           </Col>
         </Row>
       </Container>
