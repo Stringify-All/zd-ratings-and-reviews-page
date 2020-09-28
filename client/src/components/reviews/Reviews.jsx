@@ -2,11 +2,12 @@ import React, { useState, useEffect } from 'react';
 import Typography from '@material-ui/core/Typography';
 import Grid from '@material-ui/core/Grid';
 import Button from '@material-ui/core/Button';
-import { createMuiTheme, makeStyles, ThemeProvider } from '@material-ui/core/styles';
+import { ThemeProvider } from '@material-ui/core/styles';
 import theme from '../theme';
 import ReviewsList from './ReviewsList.jsx';
 import SortingDropdown from './SortingDropdown.jsx';
 import sortByFilter from '../../Helpers/SortByFilter';
+import NewReviewModal from './NewReviewModal.jsx';
 
 const Reviews = (props) => {
   const [reviews, setReviews] = useState([]);
@@ -56,7 +57,7 @@ const Reviews = (props) => {
             <Button variant="outlined" color="primary" onClick={addReviews}>More Reviews</Button>
           </Grid>
           <Grid item xs={6} md={4} lg={3}>
-            <Button variant="outlined" color="primary">Add review +</Button>
+            <NewReviewModal />
           </Grid>
         </Grid>
       </ThemeProvider>
