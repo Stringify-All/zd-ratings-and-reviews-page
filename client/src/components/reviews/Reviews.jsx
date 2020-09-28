@@ -7,7 +7,7 @@ import theme from '../theme';
 import ReviewsList from './ReviewsList.jsx';
 import SortingDropdown from './SortingDropdown.jsx';
 import sortByFilter from '../../Helpers/SortByFilter';
-import NewReviewModal from './NewReviewModal.jsx';
+import NewReviewModal from './ReviewModal/NewReviewModal.jsx';
 
 const Reviews = (props) => {
   const [reviews, setReviews] = useState([]);
