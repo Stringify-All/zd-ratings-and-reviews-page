@@ -53,7 +53,7 @@ const App = () => {
             <br />
           </Col>
           <Col sm={12} md={6} lg={8}>
-            <Reviews reviewData={productReview} />
+            <Reviews reviewData={productReview} product={product} />
           </Col>
         </Row>
       </Container>

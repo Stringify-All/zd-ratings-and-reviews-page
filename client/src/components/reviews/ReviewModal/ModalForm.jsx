@@ -12,6 +12,7 @@ import Input from '@material-ui/core/Input';
 import Rating from '@material-ui/lab/Rating';
 import Box from '@material-ui/core/Box';
 
+import AddReview from '../../../API/AddReview';
 import theme from '../../theme';
 
 const labels = {
@@ -27,8 +28,9 @@ const labels = {
   5: 'Most Excellent',
 };
 
-const ModalForm = () => {
+const ModalForm = (props) => {
   const [username, setUsername] = useState('username');
+  const [email, setEmail] = useState('email');
   const [title, setTitle] = useState('title');
   const [review, setReview] = useState('review');
   const [recommendation, setRecommendation] = useState(0);
@@ -43,11 +45,27 @@ const ModalForm = () => {
       setReview(value);
     } else if (id === 'username') {
       setUsername(value);
+    } else if (id === 'email') {
+      setEmail(value);
     }
   };
 
   const handleRecChange = (event) => {
     setRecommendation(event.target.value);
+  };
+
+  const onFormSubmit = (event) => {
+    //event.preventDefault();
+    const id = props.product;
+    const params = {
+      username,
+      email,
+      title,
+      review,
+      recommendation,
+      rating,
+    };
+    AddReview(id, params);
   };
 
   return (
@@ -81,15 +99,28 @@ const ModalForm = () => {
                 {rating !== null && <Box ml={2}>{labels[hover !== -1 ? hover : rating]}</Box>}
               </div>
             </Grid>
-            <div className="mb-5">
-              <FormControl fullWidth>
-                <InputLabel htmlFor="title">Review title</InputLabel>
-                <Input
-                  id="title"
-                  onChange={handleChange}
-                />
-              </FormControl>
-            </div>
+            <Grid item xs={6}>
+              <div>
+                <FormControl>
+                  <InputLabel htmlFor="email">Email</InputLabel>
+                  <Input
+                    id="email"
+                    onChange={handleChange}
+                  />
+                </FormControl>
+              </div>
+            </Grid>
+            <Grid item xs={12}>
+              <div className="mb-3">
+                <FormControl fullWidth>
+                  <InputLabel htmlFor="title">Review title</InputLabel>
+                  <Input
+                    id="title"
+                    onChange={handleChange}
+                  />
+                </FormControl>
+              </div>
+            </Grid>
             <FormControl fullWidth>
               <InputLabel htmlFor="review">Write your review!</InputLabel>
               <Input
@@ -110,9 +141,9 @@ const ModalForm = () => {
           </Grid>
         </div>
         <Grid container direction="row" justify="center" alignItems="center">
-          <Grid item xs={3}>
+          <Grid item xs={2}>
             <div className="align-items-center mt-3">
-              <Button type="submit" variant="contained" color="primary">Submit</Button>
+              <Button type="submit" variant="contained" color="primary" onClick={onFormSubmit}>Submit</Button>
             </div>
           </Grid>
         </Grid>
