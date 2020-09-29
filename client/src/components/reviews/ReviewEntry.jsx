@@ -3,12 +3,37 @@ import Typography from '@material-ui/core/Typography';
 import Grid from '@material-ui/core/Grid';
 import Rating from '@material-ui/lab/Rating';
 import Divider from '@material-ui/core/Divider';
+import styled from 'styled-components';
+
+import markReviewAsHelpful from '../../API/MarkRevAsHelpful';
+
+const HelperButton = styled.button`
+cursor: pointer;
+padding: 0px 15px;
+color: #5eaaa8;
+background: transparent;
+border: 0px;
+font-size: 16px;
+border-radius: 0px;
+
+&:hover {
+  background-color: transparent;
+  border: 0px;
+  textDecoration: none;
+  color: black;
+  box-shadow: 0 0px;
+`;
 
 const ReviewEntry = (props) => {
   if (props.review !== undefined) {
     const { review } = props;
     const [response, setResponse] = useState(review.response);
     const [responseTitle, setResponseTitle] = useState('Response: ');
+    const [helpfulness, setHelpfulness] = useState(review.helpfulness);
+    const onHelpfulButtonClick = () => {
+      setHelpfulness(helpfulness + 1);
+      markReviewAsHelpful(review.review_id);
+    };
 
     if (response === 'null' || response === null) {
       setResponse('');
@@ -48,14 +73,14 @@ const ReviewEntry = (props) => {
           <div className="mt-5">
             <Grid item xs={12} lg={12}>
               <Typography variant="overline">Helpful? --</Typography>
-              <Typography variant="caption">
+              <HelperButton onClick={onHelpfulButtonClick}>
                 {' '}
                 Yes (
-                {review.helpfulness}
-                )  |
+                {helpfulness}
+                )
                 {' '}
-              </Typography>
-              <Typography variant="caption"> Report </Typography>
+              </HelperButton>
+              <HelperButton variant="caption"> Report </HelperButton>
             </Grid>
           </div>
         </Grid>
