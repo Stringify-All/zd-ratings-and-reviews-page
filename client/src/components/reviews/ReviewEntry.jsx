@@ -72,7 +72,7 @@ const ReviewEntry = (props) => {
           </div>
           <div className="mt-5">
             <Grid item xs={12} lg={12}>
-              <Typography variant="overline">Helpful? --</Typography>
+              <Typography variant="overline">Helpful? -</Typography>
               <HelperButton onClick={onHelpfulButtonClick}>
                 {' '}
                 Yes (
