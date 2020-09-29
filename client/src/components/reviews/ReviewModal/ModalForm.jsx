@@ -55,7 +55,6 @@ const ModalForm = (props) => {
   };
 
   const onFormSubmit = (event) => {
-    //event.preventDefault();
     const id = props.product;
     const params = {
       username,
