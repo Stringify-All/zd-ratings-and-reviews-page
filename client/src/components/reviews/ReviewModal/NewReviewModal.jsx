@@ -16,7 +16,7 @@ const useStyles = makeStyles((modalTheme) => ({
   },
   paper: {
     backgroundColor: modalTheme.palette.background.paper,
-    border: '2px solid #000',
+    border: '2px solid #a29b93',
     boxShadow: modalTheme.shadows[5],
     padding: modalTheme.spacing(2, 4, 3),
     width: '600px',
