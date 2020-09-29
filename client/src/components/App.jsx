@@ -23,6 +23,12 @@ const App = () => {
       .then((data) => setMetadata(data));
   }, []);
 
+  if (metadata === []) {
+    return (
+      <CircularProgress />
+    );
+  }
+
   return (
     <div>
       <GlobalStyle />

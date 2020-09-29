@@ -58,7 +58,7 @@ const NewReviewModal = () => {
           <Fade in={open}>
             <div className={classes.paper}>
               <h2 id="review-modal-title">Submit a review</h2>
-              <p id="review-modal-description">react-transition-group animates me.</p>
+              <p id="review-modal-description">Let us know what you thought about the product</p>
               <ModalForm />
             </div>
           </Fade>
