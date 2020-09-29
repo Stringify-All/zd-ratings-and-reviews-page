@@ -7,6 +7,14 @@ import Divider from '@material-ui/core/Divider';
 const ReviewEntry = (props) => {
   if (props.review !== undefined) {
     const { review } = props;
+    const [response, setResponse] = useState(review.response);
+    const [responseTitle, setResponseTitle] = useState('Response: ');
+
+    if (response === 'null' || response === null) {
+      setResponse('');
+      setResponseTitle('');
+    }
+
     return (
       <>
         <Grid container direction="column">
@@ -24,6 +32,17 @@ const ReviewEntry = (props) => {
           <div className="mt-3">
             <Grid item xs={12}>
               <Typography variant="body2">{review.body}</Typography>
+            </Grid>
+          </div>
+          <div
+            className="mt-3 p-3"
+            style={{
+              backgroundColor: '#fffefc',
+            }}
+          >
+            <Grid item xs={12}>
+              <Typography variant="body2">{responseTitle}</Typography>
+              <Typography variant="body2">{response}</Typography>
             </Grid>
           </div>
           <div className="mt-5">
