@@ -57,7 +57,7 @@ const Reviews = (props) => {
             <Button variant="outlined" color="primary" onClick={addReviews}>More Reviews</Button>
           </Grid>
           <Grid item xs={6} md={4} lg={3}>
-            <NewReviewModal />
+            <NewReviewModal product={props.product} />
           </Grid>
         </Grid>
       </ThemeProvider>

@@ -19,12 +19,12 @@ const useStyles = makeStyles((modalTheme) => ({
     border: '2px solid #a29b93',
     boxShadow: modalTheme.shadows[5],
     padding: modalTheme.spacing(2, 4, 3),
-    width: '600px',
-    height: '600px',
+    width: '650px',
+    height: '650px',
   },
 }));
 
-const NewReviewModal = () => {
+const NewReviewModal = (props) => {
   const classes = useStyles();
   const [open, setOpen] = React.useState(false);
 
@@ -59,7 +59,7 @@ const NewReviewModal = () => {
             <div className={classes.paper}>
               <h2 id="review-modal-title">Submit a review</h2>
               <p id="review-modal-description">Let us know what you thought about the product</p>
-              <ModalForm />
+              <ModalForm product={props.product} />
             </div>
           </Fade>
         </Modal>
