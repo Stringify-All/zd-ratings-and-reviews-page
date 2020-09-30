@@ -10,7 +10,7 @@ import markReviewAsHelpful from '../../API/MarkRevAsHelpful';
 
 const HelperButton = styled.button`
 cursor: pointer;
-padding: 0px 15px;
+padding: 0px 0px;
 color: #5eaaa8;
 background: transparent;
 border: 0px;
@@ -32,16 +32,30 @@ const ReviewEntry = (props) => {
     const [responseTitle, setResponseTitle] = useState('Response: ');
     const [helpfulness, setHelpfulness] = useState(review.helpfulness);
     const [reviewBody, setReviewBody] = useState(review.body);
+    const [shortened, setShortened] = useState(false);
 
     useEffect(() => {
       if (reviewBody.split('').length > 250) {
         setReviewBody(shortenReviewFunc(reviewBody));
+        setShortened(true);
+      } else {
+        setShortened(null);
       }
     }, []);
 
     const onHelpfulButtonClick = () => {
       setHelpfulness(helpfulness + 1);
       markReviewAsHelpful(review.review_id);
+    };
+
+    const onShowMoreClick = () => {
+      if (shortened) {
+        setReviewBody(review.body);
+        setShortened(false);
+      } else {
+        setReviewBody(shortenReviewFunc(reviewBody));
+        setShortened(true);
+      }
     };
 
     const dateConverter = () => {
@@ -75,6 +89,18 @@ const ReviewEntry = (props) => {
           <div className="mt-3">
             <Grid item xs={12}>
               <Typography variant="body2">{reviewBody}</Typography>
+              {shortened
+                ? (
+                  <HelperButton
+                    onClick={onShowMoreClick}
+                    className="mt-2"
+                  >
+                    Say more
+                  </HelperButton>
+                )
+                : (
+                  <div> </div>
+                )}
             </Grid>
           </div>
           <div
@@ -91,7 +117,7 @@ const ReviewEntry = (props) => {
           <div className="mt-5">
             <Grid item xs={12} lg={12}>
               <Typography variant="overline">Helpful? --</Typography>
-              <HelperButton onClick={onHelpfulButtonClick}>
+              <HelperButton className="px-2" onClick={onHelpfulButtonClick}>
                 {' '}
                 Yes (
                 {helpfulness}
