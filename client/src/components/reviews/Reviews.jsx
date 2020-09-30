@@ -8,6 +8,7 @@ import ReviewsList from './ReviewsList.jsx';
 import SortingDropdown from './SortingDropdown.jsx';
 import sortByFilter from '../../Helpers/SortByFilter';
 import NewReviewModal from './ReviewModal/NewReviewModal.jsx';
+import getSortedReviews from '../../API/GetSortedReviews';
 
 const Reviews = (props) => {
   const [reviews, setReviews] = useState([]);
@@ -25,11 +26,11 @@ const Reviews = (props) => {
 
   const setDropdownValue = (filter) => {
     setSortedBy(filter);
-    setReviews(sortByFilter(filter, reviews.results));
-  };
-
-  const addReviewModal = (event) => {
-    console.log('Clicked add review button');
+    console.log(filter);
+    getSortedReviews(filter, props.product)
+      .then((data) => {
+        props.productSort(data);
+      });
   };
 
   const addReviews = () => {

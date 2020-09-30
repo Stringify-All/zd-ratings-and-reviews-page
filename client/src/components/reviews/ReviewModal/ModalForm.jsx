@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import Button from '@material-ui/core/Button';
-import { ThemeProvider } from '@material-ui/core/styles';
+import { ThemeProvider, makeStyles } from '@material-ui/core/styles';
 import Grid from '@material-ui/core/Grid';
 import FormControl from '@material-ui/core/FormControl';
 import FormLabel from '@material-ui/core/FormLabel';
@@ -11,6 +11,8 @@ import InputLabel from '@material-ui/core/InputLabel';
 import Input from '@material-ui/core/Input';
 import Rating from '@material-ui/lab/Rating';
 import Box from '@material-ui/core/Box';
+import IconButton from '@material-ui/core/IconButton';
+import PhotoCamera from '@material-ui/icons/PhotoCamera';
 
 import AddReview from '../../../API/AddReview';
 import theme from '../../theme';
@@ -28,6 +30,17 @@ const labels = {
   5: 'Most Excellent',
 };
 
+const useStyles = makeStyles((modalTheme) => ({
+  root: {
+    '& > *': {
+      margin: modalTheme.spacing(1),
+    },
+  },
+  input: {
+    display: 'none',
+  },
+}));
+
 const ModalForm = (props) => {
   const [username, setUsername] = useState('username');
   const [email, setEmail] = useState('email');
@@ -36,6 +49,7 @@ const ModalForm = (props) => {
   const [recommendation, setRecommendation] = useState(0);
   const [rating, setRating] = useState(4.5);
   const [hover, setHover] = useState(-1);
+  const classes = useStyles();
 
   const handleChange = (event) => {
     const { id, value } = event.target;
@@ -65,6 +79,10 @@ const ModalForm = (props) => {
       rating,
     };
     AddReview(id, params);
+  };
+
+  const handleImageUpload = (event) => {
+    console.log(event.target.value);
   };
 
   return (
@@ -136,6 +154,15 @@ const ModalForm = (props) => {
                   <FormControlLabel value="0" control={<Radio />} label="No" />
                 </RadioGroup>
               </FormControl>
+            </div>
+            <div className="m-5">
+              <input accept="image/*" className={classes.input} id="icon-button-file" multiple type="file" onChange={handleImageUpload} />
+              <FormLabel component="legend">Upload photos</FormLabel>
+              <FormLabel htmlFor="icon-button-file">
+                <IconButton color="primary" aria-label="upload picture" component="span">
+                  <PhotoCamera />
+                </IconButton>
+              </FormLabel>
             </div>
           </Grid>
         </div>

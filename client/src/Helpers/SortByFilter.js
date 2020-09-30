@@ -1,12 +1,8 @@
-const sortByFilter = (filter, array) => {
-  if (filter === 'helpfulness') {
-    array.sort((a, b) => b.helpfulness - a.helpfulness);
-  } else if (filter === 'relevance') {
-    array.sort((a, b) => b.rating - a.rating);
-  } else if (filter === 'newest') {
-    array.sort((a, b) => b.date - a.date);
-  }
-  return array;
+import getSortedReviews from '../API/GetSortedReviews';
+
+const sortByFilter = (filter, id) => {
+  getSortedReviews(filter, id)
+    .then((data) => (data));
 };
 
 export default sortByFilter;

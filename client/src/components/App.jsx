@@ -53,7 +53,11 @@ const App = () => {
             <br />
           </Col>
           <Col sm={12} md={6} lg={8}>
-            <Reviews reviewData={productReview} product={product} />
+            <Reviews
+              reviewData={productReview}
+              product={product}
+              productSort={setProductReview}
+            />
           </Col>
         </Row>
       </Container>
