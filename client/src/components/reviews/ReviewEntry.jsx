@@ -1,3 +1,5 @@
+/* eslint-disable jsx-a11y/click-events-have-key-events */
+/* eslint-disable jsx-a11y/no-noninteractive-element-interactions */
 import React, { useState, useEffect } from 'react';
 import Typography from '@material-ui/core/Typography';
 import Grid from '@material-ui/core/Grid';
@@ -7,6 +9,7 @@ import styled from 'styled-components';
 import shortenReviewFunc from '../../Helpers/ShortenReviewFunc';
 
 import markReviewAsHelpful from '../../API/MarkRevAsHelpful';
+import ImageModal from './ImageModal.jsx';
 
 const HelperButton = styled.button`
 cursor: pointer;
@@ -36,6 +39,7 @@ const ReviewEntry = (props) => {
     const [photos, setPhotos] = useState(review.photos);
     const [hasPhotos, setHasPhotos] = useState(false);
     const [shortened, setShortened] = useState(false);
+    const [clickedPhoto, setClickedPhoto] = useState('');
 
     useEffect(() => {
       if (reviewBody.split('').length > 250) {
@@ -74,7 +78,11 @@ const ReviewEntry = (props) => {
       const year = id.getFullYear();
       console.log(`${month} ${day} ${year}`);
       console.log(reviewBody);
-      console.log(photos);
+      console.log(clickedPhoto);
+    };
+
+    const handleImageOpen = (event) => {
+      setClickedPhoto(event.target.src);
     };
 
     if (response === 'null' || response === null) {
@@ -122,10 +130,14 @@ const ReviewEntry = (props) => {
             <Grid item xs={12}>
               <Typography variant="body2">{responseTitle}</Typography>
               <Typography variant="body2">{response}</Typography>
-              {hasPhotos
-                ? photos.map((photo) => (<img className="px-1" key={photo.id} height="75px" width="100px" alt={photo.id} src={photo.url} />))
-                : <div></div> }
             </Grid>
+          </div>
+          <div className="mt-3">
+            {hasPhotos
+              ? photos.map((photo) => (
+                <ImageModal key={photo.id} photoId={photo.id} photoUrl={photo.url} />
+              ))
+              : <div /> }
           </div>
           <div className="mt-5">
             <Grid item xs={12} lg={12}>
