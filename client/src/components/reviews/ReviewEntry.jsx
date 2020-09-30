@@ -16,6 +16,7 @@ background: transparent;
 border: 0px;
 font-size: 16px;
 border-radius: 0px;
+outline: none !important;
 
 &:hover {
   background-color: transparent;
@@ -32,6 +33,8 @@ const ReviewEntry = (props) => {
     const [responseTitle, setResponseTitle] = useState('Response: ');
     const [helpfulness, setHelpfulness] = useState(review.helpfulness);
     const [reviewBody, setReviewBody] = useState(review.body);
+    const [photos, setPhotos] = useState(review.photos);
+    const [hasPhotos, setHasPhotos] = useState(false);
     const [shortened, setShortened] = useState(false);
 
     useEffect(() => {
@@ -40,6 +43,12 @@ const ReviewEntry = (props) => {
         setShortened(true);
       } else {
         setShortened(null);
+      }
+    }, []);
+
+    useEffect(() => {
+      if (photos.length > 0) {
+        setHasPhotos(true);
       }
     }, []);
 
@@ -65,6 +74,7 @@ const ReviewEntry = (props) => {
       const year = id.getFullYear();
       console.log(`${month} ${day} ${year}`);
       console.log(reviewBody);
+      console.log(photos);
     };
 
     if (response === 'null' || response === null) {
@@ -112,6 +122,9 @@ const ReviewEntry = (props) => {
             <Grid item xs={12}>
               <Typography variant="body2">{responseTitle}</Typography>
               <Typography variant="body2">{response}</Typography>
+              {hasPhotos
+                ? photos.map((photo) => (<img className="px-1" key={photo.id} height="75px" width="100px" alt={photo.id} src={photo.url} />))
+                : <div></div> }
             </Grid>
           </div>
           <div className="mt-5">

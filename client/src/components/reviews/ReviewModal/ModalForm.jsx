@@ -11,6 +11,7 @@ import InputLabel from '@material-ui/core/InputLabel';
 import Input from '@material-ui/core/Input';
 import Rating from '@material-ui/lab/Rating';
 import Box from '@material-ui/core/Box';
+import ImageUploader from './ImageUploader.jsx';
 import IconButton from '@material-ui/core/IconButton';
 import PhotoCamera from '@material-ui/icons/PhotoCamera';
 
@@ -157,16 +158,7 @@ const ModalForm = (props) => {
                 </RadioGroup>
               </FormControl>
             </div>
-            <div className="m-5">
-              <input accept="image/*" className={classes.input} id="icon-button-file" multiple type="file" onChange={handleImageUpload} />
-              <FormLabel component="legend">Upload photos</FormLabel>
-              <FormLabel htmlFor="icon-button-file">
-                <IconButton color="primary" aria-label="upload picture" component="span">
-                  <PhotoCamera />
-                </IconButton>
-              </FormLabel>
-              <img alt="silly sea lion" src={images} width="100" height="100" />
-            </div>
+            <ImageUploader setImages={setImages} />
           </Grid>
         </div>
         <Grid container direction="row" justify="center" alignItems="center">
