@@ -4,6 +4,7 @@ import Grid from '@material-ui/core/Grid';
 import Rating from '@material-ui/lab/Rating';
 import Divider from '@material-ui/core/Divider';
 import styled from 'styled-components';
+import shortenReviewFunc from '../../Helpers/ShortenReviewFunc';
 
 import markReviewAsHelpful from '../../API/MarkRevAsHelpful';
 
@@ -30,6 +31,14 @@ const ReviewEntry = (props) => {
     const [response, setResponse] = useState(review.response);
     const [responseTitle, setResponseTitle] = useState('Response: ');
     const [helpfulness, setHelpfulness] = useState(review.helpfulness);
+    const [reviewBody, setReviewBody] = useState(review.body);
+
+    useEffect(() => {
+      if (reviewBody.split('').length > 250) {
+        setReviewBody(shortenReviewFunc(reviewBody));
+      }
+    }, []);
+
     const onHelpfulButtonClick = () => {
       setHelpfulness(helpfulness + 1);
       markReviewAsHelpful(review.review_id);
@@ -41,6 +50,7 @@ const ReviewEntry = (props) => {
       const month = id.getMonth();
       const year = id.getFullYear();
       console.log(`${month} ${day} ${year}`);
+      console.log(reviewBody);
     };
 
     if (response === 'null' || response === null) {
@@ -64,7 +74,7 @@ const ReviewEntry = (props) => {
           </div>
           <div className="mt-3">
             <Grid item xs={12}>
-              <Typography variant="body2">{review.body}</Typography>
+              <Typography variant="body2">{reviewBody}</Typography>
             </Grid>
           </div>
           <div
