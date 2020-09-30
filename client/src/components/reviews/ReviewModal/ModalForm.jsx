@@ -49,6 +49,7 @@ const ModalForm = (props) => {
   const [recommendation, setRecommendation] = useState(0);
   const [rating, setRating] = useState(4.5);
   const [hover, setHover] = useState(-1);
+  const [images, setImages] = useState('https://rb.gy/2ek2it');
   const classes = useStyles();
 
   const handleChange = (event) => {
@@ -82,7 +83,8 @@ const ModalForm = (props) => {
   };
 
   const handleImageUpload = (event) => {
-    console.log(event.target.value);
+    const imageUrl = URL.createObjectURL(event.target.files[0]);
+    setImages(imageUrl);
   };
 
   return (
@@ -163,6 +165,7 @@ const ModalForm = (props) => {
                   <PhotoCamera />
                 </IconButton>
               </FormLabel>
+              <img alt="silly sea lion" src={images} width="100" height="100" />
             </div>
           </Grid>
         </div>
