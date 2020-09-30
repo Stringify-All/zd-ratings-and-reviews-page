@@ -35,6 +35,14 @@ const ReviewEntry = (props) => {
       markReviewAsHelpful(review.review_id);
     };
 
+    const dateConverter = () => {
+      const id = new Date(review.date);
+      const day = `${id.getDate()}th`;
+      const month = id.getMonth();
+      const year = id.getFullYear();
+      console.log(`${month} ${day} ${year}`);
+    };
+
     if (response === 'null' || response === null) {
       setResponse('');
       setResponseTitle('');
@@ -80,7 +88,7 @@ const ReviewEntry = (props) => {
                 )
                 {' '}
               </HelperButton>
-              <HelperButton variant="caption"> Report </HelperButton>
+              <HelperButton variant="caption" onClick={dateConverter}> Report </HelperButton>
             </Grid>
           </div>
         </Grid>
