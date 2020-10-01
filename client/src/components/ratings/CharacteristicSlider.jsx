@@ -19,7 +19,7 @@ const ratings = [
 
 const CharacteristicSlider = (props) => (
   <div className="mt-4">
-    <Typography id="discrete-slider-always" gutterBottom>
+    <Typography id="discrete-slider" gutterBottom>
       Fit
     </Typography>
     <Slider

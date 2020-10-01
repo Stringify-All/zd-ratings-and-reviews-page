@@ -44,8 +44,6 @@ const App = () => {
             <div>
               <Col>
                 <Ratings ratingsData={metadata} />
-                <ProgressBarTable ratingsData={metadata} />
-                <CharacteristicSlider />
               </Col>
               <br />
               <Col>
