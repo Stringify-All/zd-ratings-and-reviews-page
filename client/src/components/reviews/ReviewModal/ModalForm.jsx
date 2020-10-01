@@ -11,9 +11,9 @@ import InputLabel from '@material-ui/core/InputLabel';
 import Input from '@material-ui/core/Input';
 import Rating from '@material-ui/lab/Rating';
 import Box from '@material-ui/core/Box';
-import ImageUploader from './ImageUploader.jsx';
 import IconButton from '@material-ui/core/IconButton';
 import PhotoCamera from '@material-ui/icons/PhotoCamera';
+import ImageUploader from './ImageUploader.jsx';
 
 import AddReview from '../../../API/AddReview';
 import theme from '../../theme';
@@ -43,14 +43,16 @@ const useStyles = makeStyles((modalTheme) => ({
 }));
 
 const ModalForm = (props) => {
-  const [username, setUsername] = useState('username');
-  const [email, setEmail] = useState('email');
-  const [title, setTitle] = useState('title');
-  const [review, setReview] = useState('review');
+  const [username, setUsername] = useState('');
+  const [email, setEmail] = useState('');
+  const [title, setTitle] = useState('');
+  const [review, setReview] = useState('');
   const [recommendation, setRecommendation] = useState(0);
-  const [rating, setRating] = useState(4.5);
+  const [rating, setRating] = useState(NaN);
   const [hover, setHover] = useState(-1);
   const [images, setImages] = useState('https://rb.gy/2ek2it');
+  const [isError, setIsError] = useState(true);
+  const [submitted, setSubmitted] = useState(false);
   const classes = useStyles();
 
   const handleChange = (event) => {
@@ -77,17 +79,11 @@ const ModalForm = (props) => {
       email,
       title,
       review,
-      recommendation,
+      recommendation: Number(recommendation),
       rating,
     };
     AddReview(id, params);
   };
-
-  const handleImageUpload = (event) => {
-    const imageUrl = URL.createObjectURL(event.target.files[0]);
-    setImages(imageUrl);
-  };
-
   return (
     <ThemeProvider theme={theme}>
 
@@ -123,10 +119,7 @@ const ModalForm = (props) => {
               <div>
                 <FormControl>
                   <InputLabel htmlFor="email">Email</InputLabel>
-                  <Input
-                    id="email"
-                    onChange={handleChange}
-                  />
+                  { isError && submitted ? <Input error id="email" onChange={handleChange} /> : <Input id="email" onChange={handleChange} /> }
                 </FormControl>
               </div>
             </Grid>
@@ -134,20 +127,13 @@ const ModalForm = (props) => {
               <div className="mb-3">
                 <FormControl fullWidth>
                   <InputLabel htmlFor="title">Review title</InputLabel>
-                  <Input
-                    id="title"
-                    onChange={handleChange}
-                  />
+                  { isError && submitted ? <Input error id="title" onChange={handleChange} /> : <Input id="title" onChange={handleChange} /> }
                 </FormControl>
               </div>
             </Grid>
             <FormControl fullWidth>
               <InputLabel htmlFor="review">Write your review!</InputLabel>
-              <Input
-                id="review"
-                onChange={handleChange}
-                multiline
-              />
+              { isError && submitted ? <Input error id="review" onChange={handleChange} /> : <Input id="review" onChange={handleChange} /> }
             </FormControl>
             <div className="mt-5">
               <FormControl component="fieldset">

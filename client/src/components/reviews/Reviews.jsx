@@ -3,12 +3,22 @@ import Typography from '@material-ui/core/Typography';
 import Grid from '@material-ui/core/Grid';
 import Button from '@material-ui/core/Button';
 import { ThemeProvider } from '@material-ui/core/styles';
+import styled from 'styled-components';
 import theme from '../theme';
 import ReviewsList from './ReviewsList.jsx';
 import SortingDropdown from './SortingDropdown.jsx';
 import sortByFilter from '../../Helpers/SortByFilter';
 import NewReviewModal from './ReviewModal/NewReviewModal.jsx';
 import getSortedReviews from '../../API/GetSortedReviews';
+
+const ListDiv = styled.div`
+  height: 550px;
+  overflow-y: scroll;
+
+  ::-webkit-scrollbar {
+    width: 0px;
+    background: transparent;
+`;
 
 const Reviews = (props) => {
   const [reviews, setReviews] = useState([]);
@@ -50,9 +60,11 @@ const Reviews = (props) => {
             </Typography>
           </Grid>
           <Grid item xs={12}>
-            <div className="my-4">
-              <ReviewsList reviewData={reviews} reviewsOnPage={reviewsOnPage} />
-            </div>
+            <ListDiv>
+              <div className="my-4">
+                <ReviewsList reviewData={reviews} reviewsOnPage={reviewsOnPage} />
+              </div>
+            </ListDiv>
           </Grid>
           <Grid item xs={6} md={4} lg={3}>
             <Button variant="outlined" color="primary" onClick={addReviews}>More Reviews</Button>
