@@ -54,7 +54,7 @@ const ImageModal = (props) => {
       >
         <Fade in={open}>
           <div className={classes.paper}>
-            <img alt="Sweet piece of clothing" src={props.photoUrl} height="300" width="300" />
+            <img alt="Sweet piece of clothing" src={props.photoUrl} height="300" width="350" />
           </div>
         </Fade>
       </Modal>
