@@ -12,7 +12,7 @@ import NewReviewModal from './ReviewModal/NewReviewModal.jsx';
 import getSortedReviews from '../../API/GetSortedReviews';
 
 const ListDiv = styled.div`
-  height: 550px;
+  height: 600px;
   overflow-y: scroll;
 
   ::-webkit-scrollbar {
@@ -48,7 +48,7 @@ const Reviews = (props) => {
   };
 
   return (
-    <div className="mt-2 pl-4">
+    <div className="mt-2 pl-5">
       <ThemeProvider theme={theme}>
         <Grid container direction="row" spacing={1}>
           <Grid item xs={12}>

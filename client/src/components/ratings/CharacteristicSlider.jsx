@@ -4,35 +4,39 @@ import Slider from '@material-ui/core/Slider';
 
 const ratings = [
   {
-    value: 10,
+    value: 0.5,
     label: 'Too snug',
   },
   {
-    value: 50,
+    value: 2.5,
     label: 'Just right',
   },
   {
-    value: 90,
+    value: 4.5,
     label: 'Too big',
   },
 ];
 
-const CharacteristicSlider = (props) => (
-  <div className="mt-4">
-    <Typography id="discrete-slider-always" gutterBottom>
-      Fit
-    </Typography>
-    <Slider
-      defaultValue={30}
-      aria-labelledby="discrete-slider"
-      valueLabelDisplay="auto"
-      step={10}
-      marks={ratings}
-      min={0}
-      max={100}
-      disabled
-    />
-  </div>
-);
+const CharacteristicSlider = (props) => {
+  console.log(props);
+  const value = Number(props.characteristic[1].value);
+  return (
+    <div className="mt-4">
+      <Typography id="discrete-slider-always" gutterBottom>
+        {props.characteristic[0]}
+      </Typography>
+      <Slider
+        defaultValue={value}
+        aria-labelledby="discrete-slider"
+        valueLabelDisplay="auto"
+        step={1}
+        marks={ratings}
+        min={0}
+        max={5}
+        disabled
+      />
+    </div>
+  );
+};
 
 export default CharacteristicSlider;
