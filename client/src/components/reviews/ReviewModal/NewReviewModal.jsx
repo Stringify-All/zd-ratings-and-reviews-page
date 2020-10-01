@@ -20,7 +20,7 @@ const useStyles = makeStyles((modalTheme) => ({
     boxShadow: modalTheme.shadows[5],
     padding: modalTheme.spacing(2, 4, 3),
     width: '650px',
-    height: '650px',
+    height: '800px',
   },
 }));
 
