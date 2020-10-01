@@ -11,8 +11,6 @@ import InputLabel from '@material-ui/core/InputLabel';
 import Input from '@material-ui/core/Input';
 import Rating from '@material-ui/lab/Rating';
 import Box from '@material-ui/core/Box';
-import IconButton from '@material-ui/core/IconButton';
-import PhotoCamera from '@material-ui/icons/PhotoCamera';
 import ImageUploader from './ImageUploader.jsx';
 
 import AddReview from '../../../API/AddReview';
