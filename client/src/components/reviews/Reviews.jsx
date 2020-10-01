@@ -82,10 +82,7 @@ const Reviews = (props) => {
               </div>
             </ListDiv>
           </Grid>
-          <Grid item xs={6} sm={6} md={4} lg={4}>
-            <Button variant="outlined" color="primary" onClick={addReviews}>More Reviews</Button>
-          </Grid>
-          <Grid item xs={6} sm={5} md={4} lg={4}>
+          <Grid item xs={12} sm={12} md={12} lg={12}>
             <NewReviewModal product={props.product} />
           </Grid>
         </Grid>
