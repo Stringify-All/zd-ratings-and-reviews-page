@@ -32,12 +32,10 @@ const Reviews = (props) => {
       setReviews([]);
       setStarRating('0');
     } else if (props.clickedStar === null && filtered === null) {
-      console.log('You are here');
       setReviews(props.reviewData);
       localStorage.setItem('document', JSON.stringify(props.reviewData));
     } else if (props.clickedStar !== null) {
       const defaultReviews = (JSON.parse(localStorage.getItem('document')));
-      console.log(defaultReviews);
       setFiltered(true);
       setReviews(filterReviewsByStar(defaultReviews, props.clickedStar));
     }
@@ -55,6 +53,13 @@ const Reviews = (props) => {
     setReviewsOnPage(reviewsOnPage + 2);
   };
 
+  const handleScroll = (event) => {
+    const bottom = event.target.scrollHeight - event.target.scrollTop === event.target.clientHeight;
+    if (bottom && reviewsOnPage !== reviews.length) {
+      addReviews();
+    }
+  };
+
   return (
     <div className="mt-2 pl-md-4">
       <ThemeProvider theme={theme}>
@@ -68,9 +73,12 @@ const Reviews = (props) => {
             </Typography>
           </Grid>
           <Grid item xs={12}>
-            <ListDiv>
+            <ListDiv onScroll={handleScroll}>
               <div className="my-4">
-                <ReviewsList reviewData={reviews} reviewsOnPage={reviewsOnPage} />
+                <ReviewsList
+                  reviewData={reviews}
+                  reviewsOnPage={reviewsOnPage}
+                />
               </div>
             </ListDiv>
           </Grid>
