@@ -3,6 +3,8 @@ import Grid from '@material-ui/core/Grid';
 import Typography from '@material-ui/core/Typography';
 import getAverages from '../../Helpers/GetAverageRecs';
 import StarRatings from './StarRatings.jsx';
+import ProgressBarTable from './ProgressBarTable.jsx';
+import CharacteristicsTable from './CharacteristicsTable.jsx';
 import getAverageStarRating from '../../Helpers/GetAverageStarRating';
 
 const Ratings = (props) => {
@@ -38,6 +40,8 @@ const Ratings = (props) => {
           </div>
         </Grid>
       </Grid>
+      <ProgressBarTable ratingsData={props.ratingsData} />
+      <CharacteristicsTable ratingsData={props.ratingsData} />
     </div>
   );
 };
