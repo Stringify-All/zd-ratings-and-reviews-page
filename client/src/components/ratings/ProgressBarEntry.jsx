@@ -8,6 +8,10 @@ import theme from '../theme';
 const ProgressBarEntry = (props) => {
   if (props.rating !== undefined) {
     const value = ((props.rating[1] / props.totalRatings) * 100);
+    const handleClickedStar = (event) => {
+      const clickedStar = props.rating[0];
+      props.handleClickedStar(clickedStar);
+    };
     return (
       <div>
         <ThemeProvider theme={theme}>
@@ -18,7 +22,7 @@ const ProgressBarEntry = (props) => {
             alignItems="center"
           >
             <Grid item xs={4}>
-              <Typography variant="caption">
+              <Typography variant="caption" onClick={handleClickedStar}>
                 {props.rating[0]}
                 {' '}
                 Star

@@ -40,7 +40,10 @@ const Ratings = (props) => {
           </div>
         </Grid>
       </Grid>
-      <ProgressBarTable ratingsData={props.ratingsData} />
+      <ProgressBarTable
+        ratingsData={props.ratingsData}
+        handleClickedStar={props.handleClickedStar}
+      />
       <CharacteristicsTable ratingsData={props.ratingsData} />
     </div>
   );

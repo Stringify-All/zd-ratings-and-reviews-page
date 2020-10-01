@@ -17,15 +17,10 @@ import AddReview from '../../../API/AddReview';
 import theme from '../../theme';
 
 const labels = {
-  0.5: 'Utterly Useless',
   1: 'Useless',
-  1.5: 'Poor',
-  2: 'Poor+',
-  2.5: 'Ok',
-  3: 'Ok+',
-  3.5: 'Good',
-  4: 'Good+',
-  4.5: 'Excellent',
+  2: 'Poor',
+  3: 'Ok',
+  4: 'Good',
   5: 'Most Excellent',
 };
 
@@ -102,7 +97,7 @@ const ModalForm = (props) => {
                 <Rating
                   name="hover-feedback"
                   value={rating}
-                  precision={0.5}
+                  precision={1}
                   onChange={(event, newRating) => {
                     setRating(newRating);
                   }}

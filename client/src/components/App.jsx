@@ -16,6 +16,7 @@ const App = () => {
   const [product, setProduct] = useState(4);
   const [metadata, setMetadata] = useState([]);
   const [productReview, setProductReview] = useState([]);
+  const [clickedStar, setClickedStar] = useState(null);
 
   useEffect(() => {
     getReviewForProduct(product)
@@ -30,6 +31,10 @@ const App = () => {
     );
   }
 
+  const handleClickedStar = (starRating) => {
+    setClickedStar(starRating);
+  };
+
   return (
     <div>
       <GlobalStyle />
@@ -43,7 +48,7 @@ const App = () => {
           <Col sm={12} md={6} lg={4}>
             <div>
               <Col>
-                <Ratings ratingsData={metadata} />
+                <Ratings ratingsData={metadata} handleClickedStar={handleClickedStar} />
               </Col>
               <br />
               <Col>
@@ -57,6 +62,7 @@ const App = () => {
               reviewData={productReview}
               product={product}
               productSort={setProductReview}
+              clickedStar={clickedStar}
             />
           </Col>
         </Row>
