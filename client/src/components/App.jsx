@@ -10,6 +10,7 @@ import Ratings from './ratings/Ratings.jsx';
 import ProgressBarTable from './ratings/ProgressBarTable.jsx';
 import GlobalStyle from './globalStyle';
 import Reviews from './reviews/Reviews.jsx';
+import CharacteristicSlider from './ratings/CharacteristicSlider.jsx';
 
 const App = () => {
   const [product, setProduct] = useState(4);
@@ -44,6 +45,7 @@ const App = () => {
               <Col>
                 <Ratings ratingsData={metadata} />
                 <ProgressBarTable ratingsData={metadata} />
+                <CharacteristicSlider />
               </Col>
               <br />
               <Col>
