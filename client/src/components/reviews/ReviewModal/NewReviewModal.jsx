@@ -34,6 +34,16 @@ const FormDiv = styled.div`
     background: transparent;
 `;
 
+const ModalTitle = styled.h2`
+  font-family: 'Robertson Alternate';
+  src: url('../../resources/Robertson-Alternate.ttf') format('truetype');
+  font-weight: normal;
+  color: red;
+  font-size: 60px;
+  margin-left: 0px;
+  padding-left: 0px;
+`;
+
 const NewReviewModal = (props) => {
   const classes = useStyles();
   const [open, setOpen] = React.useState(false);
@@ -68,7 +78,7 @@ const NewReviewModal = (props) => {
           <Fade in={open}>
             <FormDiv>
               <div className={classes.paper}>
-                <h2 id="review-modal-title">Submit a review</h2>
+                <ModalTitle>Submit a Review</ModalTitle>
                 <p id="review-modal-description">Let us know what you thought about the product</p>
                 <ModalForm product={props.product} />
               </div>

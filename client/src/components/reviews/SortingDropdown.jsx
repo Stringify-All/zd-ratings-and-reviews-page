@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
-import Dropdown from 'react-bootstrap/Dropdown';
+import Button from '@material-ui/core/Button';
+import Menu from '@material-ui/core/Menu';
+import MenuItem from '@material-ui/core/MenuItem';
 import styled from 'styled-components';
 
 const DropButton = styled.button`
@@ -22,25 +24,39 @@ outline: none !important;
 
 const SortingDropdown = (props) => {
   const [selected, setSelected] = useState('relevance');
+  const [anchorEl, setAnchorEl] = React.useState(null);
+
+  const handleClick = (event) => {
+    setAnchorEl(event.currentTarget);
+  };
+
+  const handleClose = () => {
+    setAnchorEl(null);
+  };
 
   const setSelector = (event) => {
     setSelected(event.target.innerText);
     props.setDropdownValue(event.target.innerText);
+    handleClose();
   };
 
   return (
-
-    <Dropdown>
-      <Dropdown.Toggle size="sm" className="nav-link" variant="light" id="dropdown-basic">
+    <>
+      <DropButton aria-controls="simple-menu" aria-haspopup="true" onClick={handleClick}>
         {selected}
-      </Dropdown.Toggle>
-
-      <Dropdown.Menu>
-        <Dropdown.Item href="#/relevance" onClick={setSelector} value="relevance">relevance</Dropdown.Item>
-        <Dropdown.Item href="#/helpfulness" onClick={setSelector} value="helpfulness">helpfulness</Dropdown.Item>
-        <Dropdown.Item href="#/newest" onClick={setSelector} value="newest">newest</Dropdown.Item>
-      </Dropdown.Menu>
-    </Dropdown>
+      </DropButton>
+      <Menu
+        id="simple-menu"
+        anchorEl={anchorEl}
+        keepMounted
+        open={Boolean(anchorEl)}
+        onClose={handleClose}
+      >
+        <MenuItem onClick={setSelector} value="relevance">relevance</MenuItem>
+        <MenuItem onClick={setSelector} value="helpfulness">helpfulness</MenuItem>
+        <MenuItem onClick={setSelector} value="newest">newest</MenuItem>
+      </Menu>
+    </>
   );
 };
 

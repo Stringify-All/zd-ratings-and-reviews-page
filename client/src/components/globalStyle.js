@@ -13,6 +13,15 @@ const GlobalStyle = createGlobalStyle`
     font-size: 28px;
     color: #056676;
   }
+  h2 {
+    font-family: 'Robertson Alternate';
+    src: url('./resources/Robertson-Alternate.ttf') format('truetype');
+    font-weight: normal;
+    color: red;
+    font-size: 60px;
+    margin-left: 20px;
+    padding-left: 20px;
+  }
 
   body {
     margin: 30 auto;

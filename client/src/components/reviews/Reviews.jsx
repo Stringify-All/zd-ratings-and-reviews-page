@@ -70,6 +70,7 @@ const Reviews = (props) => {
                 {reviews.count}
                 {' '}
                 reviews sorted by
+                {' '}
                 <SortingDropdown setDropdownValue={setDropdownValue} />
               </Typography>
             </Grid>

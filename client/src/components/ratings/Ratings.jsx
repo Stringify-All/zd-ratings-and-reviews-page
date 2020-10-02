@@ -35,7 +35,7 @@ const Ratings = (props) => {
             <Typography variant="subtitle2">
               {recommendations}
               {' '}
-              of SCRUMDOGS recommend this product
+              of THR3DERS recommend this product
             </Typography>
           </div>
         </Grid>

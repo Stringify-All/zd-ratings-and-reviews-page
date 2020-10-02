@@ -2,11 +2,11 @@ const months = ['January', 'Feburary', 'March', 'April', 'May', 'June', 'July', 
 
 const dateConverter = (date) => {
   const id = new Date(date);
-  const day = `${id.getDate()}th`;
+  const day = `${id.getDate()}`;
   const month = months[(id.getMonth()) - 1];
   const year = id.getFullYear();
 
-  return (`${month} ${day}, ${year}`);
+  return (`, ${month} ${day}, ${year}`);
 };
 
 export default dateConverter;

@@ -30,6 +30,13 @@ outline: none !important;
   box-shadow: 0 0px;
 `;
 
+const RecLabel = styled.p`
+  font-family: 'Robertson Alternate';
+  src: url('../resources/Robertson-Alternate.ttf');
+  font-weight: normal;
+  color: red;
+`;
+
 const ReviewEntry = (props) => {
   if (props.review !== undefined) {
     const { review } = props;
@@ -120,6 +127,14 @@ const ReviewEntry = (props) => {
                 )}
             </Grid>
           </div>
+          {review.recommend === 1
+            ? (
+              <div className="mt-2">
+                <Grid item xs={12}>
+                  <RecLabel>R 3 c o m m e n d e d</RecLabel>
+                </Grid>
+              </div>
+            ) : <div> </div>}
           <div
             className="mt-3 p-3"
             style={{

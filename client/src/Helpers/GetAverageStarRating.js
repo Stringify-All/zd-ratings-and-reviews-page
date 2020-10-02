@@ -1,7 +1,7 @@
-const getAverageStarRating = (recObj) => {
-  const weightedSum = ((1 * recObj[1]) + (2 * recObj[2])
-  + (3 * recObj[3]) + (4 * recObj[4]) + (5 * recObj[5]));
-  const total = recObj[1] + recObj[2] + recObj[3] + recObj[4] + recObj[5];
+const getAverageStarRating = (ratingsObj) => {
+  const weightedSum = ((1 * ratingsObj[1]) + (2 * ratingsObj[2])
+  + (3 * ratingsObj[3]) + (4 * ratingsObj[4]) + (5 * ratingsObj[5]));
+  const total = ratingsObj[1] + ratingsObj[2] + ratingsObj[3] + ratingsObj[4] + ratingsObj[5];
   const avgStarVal = (weightedSum / total);
   return avgStarVal.toFixed(1);
 };
