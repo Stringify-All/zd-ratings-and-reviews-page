@@ -124,10 +124,14 @@ const ModalForm = (props) => {
                 </FormControl>
               </div>
             </Grid>
-            <FormControl fullWidth>
-              <InputLabel htmlFor="review">Write your review!</InputLabel>
-              { isError && submitted ? <Input error id="review" onChange={handleChange} /> : <Input id="review" onChange={handleChange} /> }
-            </FormControl>
+            <Grid item xs={12}>
+              <div className="my-4">
+                <FormControl fullWidth>
+                  <InputLabel htmlFor="review">Write your review!</InputLabel>
+                  { isError && submitted ? <Input error id="review" onChange={handleChange} /> : <Input id="review" onChange={handleChange} /> }
+                </FormControl>
+              </div>
+            </Grid>
             <div className="mt-5">
               <FormControl component="fieldset">
                 <FormLabel component="legend">Would you recommend this product?</FormLabel>
@@ -137,7 +141,7 @@ const ModalForm = (props) => {
                 </RadioGroup>
               </FormControl>
             </div>
-            <ImageUploader setImages={setImages} />
+            {/* <ImageUploader setImages={setImages} /> */}
           </Grid>
         </div>
         <Grid container direction="row" justify="center" alignItems="center">
