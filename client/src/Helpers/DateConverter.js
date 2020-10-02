@@ -1,4 +1,4 @@
-const months = ['January', 'Feburary', 'March', 'April', 'May', 'June', 'July', 'August', 'Septemner', 'October', 'November', 'December'];
+const months = ['January', 'Feburary', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
 
 const dateConverter = (date) => {
   const id = new Date(date);

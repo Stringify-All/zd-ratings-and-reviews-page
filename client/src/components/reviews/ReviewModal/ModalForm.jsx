@@ -37,32 +37,63 @@ const useStyles = makeStyles((modalTheme) => ({
 
 const ModalForm = (props) => {
   const [username, setUsername] = useState('');
+  const [nameError, setNameError] = useState(true);
   const [email, setEmail] = useState('');
+  const [emailError, setEmailError] = useState(true);
   const [title, setTitle] = useState('');
+  const [titleError, setTitleError] = useState(true);
   const [review, setReview] = useState('');
+  const [reviewError, setReviewError] = useState(true);
   const [recommendation, setRecommendation] = useState(0);
+  const [recommendatitonError, setRecommendationError] = useState(true);
   const [rating, setRating] = useState(NaN);
+  const [ratingError, setRatingError] = useState(true);
   const [hover, setHover] = useState(-1);
   const [images, setImages] = useState('https://rb.gy/2ek2it');
   const [isError, setIsError] = useState(true);
   const [submitted, setSubmitted] = useState(false);
   const classes = useStyles();
 
+  useEffect(() => {
+    if (
+      !nameError
+      && !emailError
+      && !titleError
+      && !reviewError
+      && !recommendatitonError
+      && !ratingError
+    ) {
+      setIsError(false);
+    }
+  }, [nameError,
+    emailError,
+    titleError,
+    reviewError,
+    recommendatitonError,
+    ratingError]);
+
   const handleChange = (event) => {
     const { id, value } = event.target;
     if (id === 'title') {
       setTitle(value);
+      setTitleError(false);
     } else if (id === 'review') {
       setReview(value);
     } else if (id === 'username') {
       setUsername(value);
+      setNameError(false);
     } else if (id === 'email') {
       setEmail(value);
+      setEmailError(false);
+    }
+    if (review.length >= 50) {
+      setReviewError(false);
     }
   };
 
   const handleRecChange = (event) => {
     setRecommendation(event.target.value);
+    setRecommendationError(false);
   };
 
   const onFormSubmit = (event) => {
@@ -92,12 +123,16 @@ const ModalForm = (props) => {
             <Grid item xs={6}>
               <FormControl>
                 <InputLabel htmlFor="username">Name *</InputLabel>
-                { isError && submitted ? <Input error id="username" onChange={handleChange} /> : <Input id="username" onChange={handleChange} /> }
+                { nameError && submitted
+                  ? <Input error id="username" onChange={handleChange} />
+                  : <Input id="username" onChange={handleChange} /> }
               </FormControl>
             </Grid>
             <Grid item xs={6}>
               <div className="mt-3">
-                <FormLabel>What would you rate this product? *</FormLabel>
+                {ratingError && submitted
+                  ? <FormLabel error>What would you rate this product? *</FormLabel>
+                  : <FormLabel>What would you rate this product? *</FormLabel>}
                 <br />
                 <Rating
                   name="hover-feedback"
@@ -105,6 +140,7 @@ const ModalForm = (props) => {
                   precision={1}
                   onChange={(event, newRating) => {
                     setRating(newRating);
+                    setRatingError(false);
                   }}
                   onChangeActive={(event, newHover) => {
                     setHover(newHover);
@@ -117,7 +153,9 @@ const ModalForm = (props) => {
               <div className="mb-3">
                 <FormControl>
                   <InputLabel htmlFor="email">Email *</InputLabel>
-                  { isError && submitted ? <Input error id="email" onChange={handleChange} /> : <Input id="email" onChange={handleChange} /> }
+                  { emailError && submitted
+                    ? <Input error id="email" onChange={handleChange} />
+                    : <Input id="email" onChange={handleChange} /> }
                 </FormControl>
               </div>
             </Grid>
@@ -125,7 +163,9 @@ const ModalForm = (props) => {
               <div className="mb-3">
                 <FormControl fullWidth>
                   <InputLabel htmlFor="title">Review title *</InputLabel>
-                  { isError && submitted ? <Input error id="title" onChange={handleChange} /> : <Input id="title" onChange={handleChange} /> }
+                  { titleError && submitted
+                    ? <Input error id="title" onChange={handleChange} />
+                    : <Input id="title" onChange={handleChange} /> }
                 </FormControl>
               </div>
             </Grid>
@@ -133,13 +173,17 @@ const ModalForm = (props) => {
               <div className="my-4">
                 <FormControl fullWidth>
                   <InputLabel htmlFor="review">Write your review! *</InputLabel>
-                  { isError && submitted ? <Input error id="review" onChange={handleChange} /> : <Input id="review" onChange={handleChange} /> }
+                  { reviewError && submitted
+                    ? <Input error id="review" onChange={handleChange} />
+                    : <Input id="review" onChange={handleChange} /> }
                 </FormControl>
               </div>
             </Grid>
             <div className="mt-5">
               <FormControl component="fieldset">
-                <FormLabel component="legend">Would you recommend this product? *</FormLabel>
+                { recommendatitonError && submitted
+                  ? <FormLabel error component="legend">Would you recommend this product? *</FormLabel>
+                  : <FormLabel component="legend">Would you recommend this product? *</FormLabel> }
                 <RadioGroup aria-label="recommendation" name="recommendation1" value={recommendation} onChange={handleRecChange}>
                   <FormControlLabel value="1" control={<Radio />} label="Yes!" />
                   <FormControlLabel value="0" control={<Radio />} label="No" />
