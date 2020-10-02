@@ -7,7 +7,7 @@ const addReview = (id, params) => axios.post(`http://52.26.193.201:3000/reviews/
   recommend: params.recommendation,
   name: params.username,
   email: params.email,
-  photos: ['http://localhost:9003/d12a73ad-a677-4cf9-932f-ef30d40e0dd7'],
+  photos: [],
   characteristics: [],
 })
   .then((res) => (res.data))

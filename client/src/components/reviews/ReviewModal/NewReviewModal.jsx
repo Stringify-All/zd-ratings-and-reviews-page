@@ -5,6 +5,7 @@ import Backdrop from '@material-ui/core/Backdrop';
 import Fade from '@material-ui/core/Fade';
 import Button from '@material-ui/core/Button';
 
+import styled from 'styled-components';
 import theme from '../../theme';
 import ModalForm from './ModalForm.jsx';
 
@@ -23,6 +24,15 @@ const useStyles = makeStyles((modalTheme) => ({
     height: '800px',
   },
 }));
+
+const FormDiv = styled.div`
+  height: 600px;
+  overflow-y: scroll;
+
+  ::-webkit-scrollbar {
+    width: 0px;
+    background: transparent;
+`;
 
 const NewReviewModal = (props) => {
   const classes = useStyles();
@@ -56,11 +66,13 @@ const NewReviewModal = (props) => {
           }}
         >
           <Fade in={open}>
-            <div className={classes.paper}>
-              <h2 id="review-modal-title">Submit a review</h2>
-              <p id="review-modal-description">Let us know what you thought about the product</p>
-              <ModalForm product={props.product} />
-            </div>
+            <FormDiv>
+              <div className={classes.paper}>
+                <h2 id="review-modal-title">Submit a review</h2>
+                <p id="review-modal-description">Let us know what you thought about the product</p>
+                <ModalForm product={props.product} />
+              </div>
+            </FormDiv>
           </Fade>
         </Modal>
       </ThemeProvider>
