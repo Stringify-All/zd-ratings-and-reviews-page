@@ -64,13 +64,15 @@ const Reviews = (props) => {
     <div className="mt-2 pl-md-4">
       <ThemeProvider theme={theme}>
         <Grid container direction="row" spacing={1}>
-          <Grid item xs={12}>
-            <Typography variant="subtitle1">
-              {reviews.count}
-              {' '}
-              reviews sorted by
-              <SortingDropdown setDropdownValue={setDropdownValue} />
-            </Typography>
+          <Grid container direction="row" spacing={0}>
+            <Grid item xs={12}>
+              <Typography variant="subtitle1">
+                {reviews.count}
+                {' '}
+                reviews sorted by
+                <SortingDropdown setDropdownValue={setDropdownValue} />
+              </Typography>
+            </Grid>
           </Grid>
           <Grid item xs={12}>
             <ListDiv onScroll={handleScroll}>
