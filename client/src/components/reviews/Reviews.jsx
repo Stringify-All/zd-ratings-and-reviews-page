@@ -93,7 +93,7 @@ const Reviews = (props) => {
             { searchBar
               ? (
                 <>
-                  <Grid item xs={9}>
+                  <Grid item xs={10}>
                     <SearchBar />
                   </Grid>
                   <Grid item xs={2} className="p-3">
@@ -104,18 +104,22 @@ const Reviews = (props) => {
                 </>
               )
               : (
-                <Grid item xs={12}>
-                  <Typography variant="subtitle1">
-                    {reviews.count}
-                    {' '}
-                    reviews sorted by
-                    {' '}
-                    <SortingDropdown setDropdownValue={setDropdownValue} />
-                  </Typography>
-                  <SearchButton aria-label="search" onClick={handleSearchRender}>
-                    <SearchIcon />
-                  </SearchButton>
-                </Grid>
+                <>
+                  <Grid item xs={10}>
+                    <Typography variant="subtitle1">
+                      {reviews.count}
+                      {' '}
+                      reviews sorted by
+                      {' '}
+                      <SortingDropdown setDropdownValue={setDropdownValue} />
+                    </Typography>
+                  </Grid>
+                  <Grid item xs={2}>
+                    <SearchButton aria-label="search" onClick={handleSearchRender}>
+                      <SearchIcon />
+                    </SearchButton>
+                  </Grid>
+                </>
               )}
           </Grid>
           <Grid item xs={12}>
