@@ -34,6 +34,7 @@ const RecLabel = styled.p`
   font-family: 'Robertson Alternate';
   src: url('../resources/Robertson-Alternate.ttf');
   font-weight: normal;
+  font-size: 20px;
   color: red;
 `;
 

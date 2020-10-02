@@ -1,9 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import Typography from '@material-ui/core/Typography';
 import Grid from '@material-ui/core/Grid';
-import Button from '@material-ui/core/Button';
 import { ThemeProvider } from '@material-ui/core/styles';
 import styled from 'styled-components';
+import SearchIcon from '@material-ui/icons/Search';
+import CloseIcon from '@material-ui/icons/Close';
 import theme from '../theme';
 import ReviewsList from './ReviewsList.jsx';
 import SortingDropdown from './SortingDropdown.jsx';
@@ -11,6 +12,7 @@ import sortByFilter from '../../Helpers/SortByFilter';
 import NewReviewModal from './ReviewModal/NewReviewModal.jsx';
 import getSortedReviews from '../../API/GetSortedReviews';
 import filterReviewsByStar from '../../Helpers/FilterReviewsByStar';
+import SearchBar from './SearchBar.jsx';
 
 const ListDiv = styled.div`
   height: 600px;
@@ -21,11 +23,30 @@ const ListDiv = styled.div`
     background: transparent;
 `;
 
+const SearchButton = styled.button`
+cursor: pointer;
+padding: 0px 0px;
+color: #5eaaa8;
+background: transparent;
+border: 0px;
+font-size: 16px;
+border-radius: 0px;
+outline: none !important;
+
+&:hover {
+  background-color: transparent;
+  border: 0px;
+  textDecoration: none;
+  color: black;
+  box-shadow: 0 0px;
+`;
+
 const Reviews = (props) => {
   const [reviews, setReviews] = useState([]);
   const [sortedBy, setSortedBy] = useState('relevance');
   const [reviewsOnPage, setReviewsOnPage] = useState(2);
   const [filtered, setFiltered] = useState(null);
+  const [searchBar, setSearchBar] = useState(false);
 
   useEffect(() => {
     if (!props.reviewData) {
@@ -60,20 +81,42 @@ const Reviews = (props) => {
     }
   };
 
+  const handleSearchRender = (event) => {
+    setSearchBar(!searchBar);
+  };
+
   return (
-    <div className="mt-2 pl-md-4">
+    <div className="pl-md-4">
       <ThemeProvider theme={theme}>
         <Grid container direction="row" spacing={1}>
           <Grid container direction="row" spacing={0}>
-            <Grid item xs={12}>
-              <Typography variant="subtitle1">
-                {reviews.count}
-                {' '}
-                reviews sorted by
-                {' '}
-                <SortingDropdown setDropdownValue={setDropdownValue} />
-              </Typography>
-            </Grid>
+            { searchBar
+              ? (
+                <>
+                  <Grid item xs={9}>
+                    <SearchBar />
+                  </Grid>
+                  <Grid item xs={2} className="p-3">
+                    <SearchButton aria-label="search" onClick={handleSearchRender}>
+                      <CloseIcon />
+                    </SearchButton>
+                  </Grid>
+                </>
+              )
+              : (
+                <Grid item xs={12}>
+                  <Typography variant="subtitle1">
+                    {reviews.count}
+                    {' '}
+                    reviews sorted by
+                    {' '}
+                    <SortingDropdown setDropdownValue={setDropdownValue} />
+                  </Typography>
+                  <SearchButton aria-label="search" onClick={handleSearchRender}>
+                    <SearchIcon />
+                  </SearchButton>
+                </Grid>
+              )}
           </Grid>
           <Grid item xs={12}>
             <ListDiv onScroll={handleScroll}>

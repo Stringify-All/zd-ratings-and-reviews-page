@@ -25,16 +25,14 @@ const App = () => {
       .then((data) => setMetadata(data));
   }, []);
 
-  if (metadata === []) {
+  const handleClickedStar = (starRating) => {
+    setClickedStar(starRating);
+  };
+  if (metadata.ratings === undefined || productReview.results.length === 0) {
     return (
       <CircularProgress />
     );
   }
-
-  const handleClickedStar = (starRating) => {
-    setClickedStar(starRating);
-  };
-
   return (
     <div>
       <GlobalStyle />
