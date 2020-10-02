@@ -66,16 +66,22 @@ const ModalForm = (props) => {
   };
 
   const onFormSubmit = (event) => {
-    const id = props.product;
-    const params = {
-      username,
-      email,
-      title,
-      review,
-      recommendation: Number(recommendation),
-      rating,
-    };
-    AddReview(id, params);
+    if (isError) {
+      event.preventDefault();
+      setSubmitted(true);
+      console.log('Not all fields are filled out');
+    } else {
+      const id = props.product;
+      const params = {
+        username,
+        email,
+        title,
+        review,
+        recommendation: Number(recommendation),
+        rating,
+      };
+      AddReview(id, params);
+    }
   };
   return (
     <ThemeProvider theme={theme}>
@@ -85,15 +91,14 @@ const ModalForm = (props) => {
           <Grid container direction="row" spacing={2}>
             <Grid item xs={6}>
               <FormControl>
-                <InputLabel htmlFor="username">Name</InputLabel>
-                <Input
-                  id="username"
-                  onChange={handleChange}
-                />
+                <InputLabel htmlFor="username">Name *</InputLabel>
+                { isError && submitted ? <Input error id="username" onChange={handleChange} /> : <Input id="username" onChange={handleChange} /> }
               </FormControl>
             </Grid>
             <Grid item xs={6}>
               <div className="mt-3">
+                <FormLabel>What would you rate this product? *</FormLabel>
+                <br />
                 <Rating
                   name="hover-feedback"
                   value={rating}
@@ -109,9 +114,9 @@ const ModalForm = (props) => {
               </div>
             </Grid>
             <Grid item xs={6}>
-              <div>
+              <div className="mb-3">
                 <FormControl>
-                  <InputLabel htmlFor="email">Email</InputLabel>
+                  <InputLabel htmlFor="email">Email *</InputLabel>
                   { isError && submitted ? <Input error id="email" onChange={handleChange} /> : <Input id="email" onChange={handleChange} /> }
                 </FormControl>
               </div>
@@ -119,7 +124,7 @@ const ModalForm = (props) => {
             <Grid item xs={12}>
               <div className="mb-3">
                 <FormControl fullWidth>
-                  <InputLabel htmlFor="title">Review title</InputLabel>
+                  <InputLabel htmlFor="title">Review title *</InputLabel>
                   { isError && submitted ? <Input error id="title" onChange={handleChange} /> : <Input id="title" onChange={handleChange} /> }
                 </FormControl>
               </div>
@@ -127,14 +132,14 @@ const ModalForm = (props) => {
             <Grid item xs={12}>
               <div className="my-4">
                 <FormControl fullWidth>
-                  <InputLabel htmlFor="review">Write your review!</InputLabel>
+                  <InputLabel htmlFor="review">Write your review! *</InputLabel>
                   { isError && submitted ? <Input error id="review" onChange={handleChange} /> : <Input id="review" onChange={handleChange} /> }
                 </FormControl>
               </div>
             </Grid>
             <div className="mt-5">
               <FormControl component="fieldset">
-                <FormLabel component="legend">Would you recommend this product?</FormLabel>
+                <FormLabel component="legend">Would you recommend this product? *</FormLabel>
                 <RadioGroup aria-label="recommendation" name="recommendation1" value={recommendation} onChange={handleRecChange}>
                   <FormControlLabel value="1" control={<Radio />} label="Yes!" />
                   <FormControlLabel value="0" control={<Radio />} label="No" />
