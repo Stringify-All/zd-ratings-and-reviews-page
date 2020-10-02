@@ -124,7 +124,7 @@ const Reviews = (props) => {
           </Grid>
           <Grid item xs={12}>
             <ListDiv onScroll={handleScroll}>
-              <div className="my-4">
+              <div className="my-5">
                 <ReviewsList
                   reviewData={reviews}
                   reviewsOnPage={reviewsOnPage}
