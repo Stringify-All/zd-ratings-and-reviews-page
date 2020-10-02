@@ -10,7 +10,11 @@ const ProgressBarTable = (props) => {
     return (
       <Grid>
         {ratingsData.map((rating) => (
-          <ProgressBarEntry key={rating} rating={rating} totalRatings={totalRatings} />
+          <ProgressBarEntry
+            handleClickedStar={props.handleClickedStar}
+            key={rating} rating={rating}
+            totalRatings={totalRatings}
+          />
         ))}
       </Grid>
     );

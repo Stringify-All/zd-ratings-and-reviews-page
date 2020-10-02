@@ -7,6 +7,7 @@ import Rating from '@material-ui/lab/Rating';
 import Divider from '@material-ui/core/Divider';
 import styled from 'styled-components';
 import shortenReviewFunc from '../../Helpers/ShortenReviewFunc';
+import dateConverter from '../../Helpers/DateConverter';
 
 import markReviewAsHelpful from '../../API/MarkRevAsHelpful';
 import ImageModal from './ImageModal.jsx';
@@ -40,6 +41,7 @@ const ReviewEntry = (props) => {
     const [hasPhotos, setHasPhotos] = useState(false);
     const [shortened, setShortened] = useState(false);
     const [clickedPhoto, setClickedPhoto] = useState('');
+    const [date, setDate] = useState('');
 
     useEffect(() => {
       if (reviewBody.split('').length > 250) {
@@ -48,6 +50,7 @@ const ReviewEntry = (props) => {
       } else {
         setShortened(null);
       }
+      setDate(dateConverter(review.date));
     }, []);
 
     useEffect(() => {
@@ -71,16 +74,6 @@ const ReviewEntry = (props) => {
       }
     };
 
-    const dateConverter = () => {
-      const id = new Date(review.date);
-      const day = `${id.getDate()}th`;
-      const month = id.getMonth();
-      const year = id.getFullYear();
-      console.log(`${month} ${day} ${year}`);
-      console.log(reviewBody);
-      console.log(clickedPhoto);
-    };
-
     const handleImageOpen = (event) => {
       setClickedPhoto(event.target.src);
     };
@@ -92,13 +85,19 @@ const ReviewEntry = (props) => {
 
     return (
       <>
-        <Grid container direction="column">
-          <Grid item xs={6} lg={3}>
+        <Grid container direction="row">
+          <Grid item xs={6} lg={8}>
             <Rating name="half-rating-read" precision={0.25} value={review.rating} readOnly size="small" />
           </Grid>
-          <Grid item xs={6} lg={9}>
-            <Typography variant="caption">{review.reviewer_name}</Typography>
+          <Grid item xs={6} lg={4}>
+            <Typography variant="caption">
+              {review.reviewer_name}
+              {' '}
+              {date}
+            </Typography>
           </Grid>
+        </Grid>
+        <Grid container direction="column">
           <div className="mt-3">
             <Grid item xs={12}>
               <Typography variant="h6">{review.summary}</Typography>
