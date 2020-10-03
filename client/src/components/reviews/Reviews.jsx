@@ -1,18 +1,32 @@
 import React, { useState, useEffect } from 'react';
 import Typography from '@material-ui/core/Typography';
 import Grid from '@material-ui/core/Grid';
-import { ThemeProvider } from '@material-ui/core/styles';
+import { ThemeProvider, makeStyles } from '@material-ui/core/styles';
 import styled from 'styled-components';
 import SearchIcon from '@material-ui/icons/Search';
 import CloseIcon from '@material-ui/icons/Close';
+import Paper from '@material-ui/core/Paper';
+import Grow from '@material-ui/core/Grow';
 import theme from '../theme';
 import ReviewsList from './ReviewsList.jsx';
 import SortingDropdown from './SortingDropdown.jsx';
-import sortByFilter from '../../Helpers/SortByFilter';
 import NewReviewModal from './ReviewModal/NewReviewModal.jsx';
 import getSortedReviews from '../../API/GetSortedReviews';
 import filterReviewsByStar from '../../Helpers/FilterReviewsByStar';
 import SearchBar from './SearchBar.jsx';
+
+const useStyles = makeStyles((theme) => ({
+  root: {
+    width: 700,
+    position: 'left',
+  },
+  container: {
+    display: 'flex',
+  },
+  paper: {
+    margin: theme.spacing(1),
+  },
+}));
 
 const ListDiv = styled.div`
   height: 600px;
@@ -32,6 +46,8 @@ border: 0px;
 font-size: 16px;
 border-radius: 0px;
 outline: none !important;
+transition-timing-function: ease-in;
+transition: .3s;
 
 &:hover {
   background-color: transparent;
@@ -47,6 +63,7 @@ const Reviews = (props) => {
   const [reviewsOnPage, setReviewsOnPage] = useState(2);
   const [filtered, setFiltered] = useState(null);
   const [searchBar, setSearchBar] = useState(false);
+  const classes = useStyles();
 
   useEffect(() => {
     if (!props.reviewData) {
@@ -94,10 +111,14 @@ const Reviews = (props) => {
               ? (
                 <>
                   <Grid item xs={10}>
-                    <SearchBar />
+                    <Grow in={searchBar}>
+                      <Paper elevation={4} className={classes.paper}>
+                        <SearchBar />
+                      </Paper>
+                    </Grow>
                   </Grid>
-                  <Grid item xs={2} className="p-3">
-                    <SearchButton aria-label="search" onClick={handleSearchRender}>
+                  <Grid item xs={2}>
+                    <SearchButton onClick={handleSearchRender}>
                       <CloseIcon />
                     </SearchButton>
                   </Grid>
@@ -105,7 +126,7 @@ const Reviews = (props) => {
               )
               : (
                 <>
-                  <Grid item xs={10}>
+                  <Grid item xs={10} className="mb-2">
                     <Typography variant="subtitle1">
                       {reviews.count}
                       {' '}
@@ -115,7 +136,7 @@ const Reviews = (props) => {
                     </Typography>
                   </Grid>
                   <Grid item xs={2}>
-                    <SearchButton aria-label="search" onClick={handleSearchRender}>
+                    <SearchButton onClick={handleSearchRender}>
                       <SearchIcon />
                     </SearchButton>
                   </Grid>
