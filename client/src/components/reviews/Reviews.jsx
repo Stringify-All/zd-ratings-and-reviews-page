@@ -13,6 +13,7 @@ import SortingDropdown from './SortingDropdown.jsx';
 import NewReviewModal from './ReviewModal/NewReviewModal.jsx';
 import getSortedReviews from '../../API/GetSortedReviews';
 import filterReviewsByStar from '../../Helpers/FilterReviewsByStar';
+import filterReviewsByInput from '../../Helpers/FilterReviewsByInput';
 import SearchBar from './SearchBar.jsx';
 
 const useStyles = makeStyles((theme) => ({
@@ -102,6 +103,15 @@ const Reviews = (props) => {
     setSearchBar(!searchBar);
   };
 
+  const handleSearchInput = (text) => {
+    const defaultReviews = (JSON.parse(localStorage.getItem('document')));
+    if (text !== null) {
+      setReviews(filterReviewsByInput(defaultReviews, text));
+    } else {
+      setReviews(defaultReviews);
+    }
+  };
+
   return (
     <div className="pl-md-4">
       <ThemeProvider theme={theme}>
@@ -113,7 +123,7 @@ const Reviews = (props) => {
                   <Grid item xs={10}>
                     <Grow in={searchBar}>
                       <Paper elevation={4} className={classes.paper}>
-                        <SearchBar />
+                        <SearchBar handleSearchInput={handleSearchInput} />
                       </Paper>
                     </Grow>
                   </Grid>
