@@ -69,6 +69,7 @@ const Reviews = ({
   const [reviewsOnPage, setReviewsOnPage] = useState(2);
   const [filtered, setFiltered] = useState(null);
   const [searchBar, setSearchBar] = useState(false);
+  const [input, setInput] = useState(null);
   const classes = useStyles();
 
   useEffect(() => {
@@ -77,12 +78,16 @@ const Reviews = ({
     } else if (clickedStar === null && filtered === null) {
       setReviews(reviewData);
       localStorage.setItem('document', JSON.stringify(reviewData));
-    } else if (clickedStar !== null) {
+    }
+  }, [reviewData]);
+
+  useEffect(() => {
+    if (clickedStar !== null) {
       const defaultReviews = (JSON.parse(localStorage.getItem('document')));
       setFiltered(true);
       setReviews(filterReviewsByStar(defaultReviews, clickedStar));
     }
-  }, [reviewData, clickedStar]);
+  }, [clickedStar]);
 
   const setDropdownValue = (filter) => {
     setSortedBy(filter);
@@ -107,12 +112,19 @@ const Reviews = ({
     setSearchBar(!searchBar);
   };
 
+  const handleClose = (event) => {
+    setSearchBar(!searchBar);
+    setReviews(JSON.parse(localStorage.getItem('document')));
+  };
+
   const handleSearchInput = (text) => {
     const defaultReviews = (JSON.parse(localStorage.getItem('document')));
     if (text !== null) {
       setReviews(filterReviewsByInput(defaultReviews, text));
+      setInput(text);
     } else {
       setReviews(defaultReviews);
+      setInput(text);
     }
   };
 
@@ -132,7 +144,7 @@ const Reviews = ({
                     </Grow>
                   </Grid>
                   <Grid item xs={2}>
-                    <SearchButton onClick={handleSearchRender}>
+                    <SearchButton onClick={handleClose}>
                       <CloseIcon />
                     </SearchButton>
                   </Grid>
@@ -163,6 +175,7 @@ const Reviews = ({
                 <ReviewsList
                   reviewData={reviews}
                   reviewsOnPage={reviewsOnPage}
+                  input={input}
                 />
               </div>
             </ListDiv>

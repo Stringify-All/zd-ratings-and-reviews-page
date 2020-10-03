@@ -41,7 +41,12 @@ const RecLabel = styled.p`
   color: red;
 `;
 
-const ReviewEntry = ({ review }) => {
+const HighlightedText = styled.p`
+  background: #5eaaa8;
+  color: white;
+`;
+
+const ReviewEntry = ({ review, input }) => {
   if (review !== undefined) {
     const [response, setResponse] = useState(review.response);
     const [responseTitle, setResponseTitle] = useState('Response: ');
@@ -51,7 +56,16 @@ const ReviewEntry = ({ review }) => {
     const [hasPhotos, setHasPhotos] = useState(false);
     const [shortened, setShortened] = useState(false);
     const [clickedPhoto, setClickedPhoto] = useState('');
+    const [highlightedBody, setHighlightedBody] = useState(null);
+    const [textInput, setTextInput] = useState(input);
     const [date, setDate] = useState('');
+
+    const highlightText = (query) => {
+      const lowerCaseBody = reviewBody.toLowerCase();
+      if (query !== null && lowerCaseBody.includes(query)) {
+        setHighlightedBody(lowerCaseBody);
+      }
+    };
 
     useEffect(() => {
       if (reviewBody.split('').length > 250) {
@@ -68,6 +82,12 @@ const ReviewEntry = ({ review }) => {
         setHasPhotos(true);
       }
     }, []);
+
+    useEffect(() => {
+      if (textInput !== null) {
+        highlightText(textInput);
+      }
+    }, [input]);
 
     const onHelpfulButtonClick = () => {
       setHelpfulness(helpfulness + 1);
@@ -111,7 +131,22 @@ const ReviewEntry = ({ review }) => {
           </div>
           <div className="mt-3">
             <Grid item xs={12}>
-              <Typography variant="body2">{reviewBody}</Typography>
+              {highlightedBody !== null
+                ? (
+                  <div>
+                    {highlightedBody.split(' ').map((word) => {
+                      if (word.includes(textInput)) {
+                        return (
+                          <span key={Math.random()} style={{ color: '#a29b93' }}>{`${word} `}</span>
+                        );
+                      }
+                      return (
+                        <span key={Math.random()} style={{ color: '#056676' }}>{`${word} `}</span>
+                      );
+                    })}
+                  </div>
+                )
+                : <Typography variant="body2">{reviewBody}</Typography>}
               {shortened
                 ? (
                   <HelperButton

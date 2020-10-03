@@ -14,7 +14,7 @@ const SearchBar = ({ handleSearchInput }) => {
       handleSearchInput(inputText);
     } else {
       setInput(null);
-      handleSearchInput(input);
+      handleSearchInput(null);
     }
   };
 

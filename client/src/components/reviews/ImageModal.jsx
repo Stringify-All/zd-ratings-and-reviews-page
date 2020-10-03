@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 /* eslint-disable jsx-a11y/click-events-have-key-events */
 /* eslint-disable jsx-a11y/no-noninteractive-element-interactions */
 import React from 'react';
@@ -20,7 +21,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const ImageModal = (props) => {
+const ImageModal = ({ photoId, photoUrl }) => {
   const classes = useStyles();
   const [open, setOpen] = React.useState(false);
 
@@ -39,8 +40,8 @@ const ImageModal = (props) => {
         onClick={handleOpen}
         height="75px"
         width="100px"
-        alt={props.photoId}
-        src={props.photoUrl}
+        alt={photoId}
+        src={photoUrl}
       />
       <Modal
         className={classes.modal}
@@ -54,7 +55,7 @@ const ImageModal = (props) => {
       >
         <Fade in={open}>
           <div className={classes.paper}>
-            <img alt="Sweet piece of clothing" src={props.photoUrl} height="300" width="350" />
+            <img alt="Sweet piece of clothing" src={photoUrl} height="300" width="350" />
           </div>
         </Fade>
       </Modal>

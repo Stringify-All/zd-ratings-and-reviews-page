@@ -4,13 +4,13 @@ import Grid from '@material-ui/core/Grid';
 // eslint-disable-next-line import/extensions
 import ReviewEntry from './ReviewEntry.jsx';
 
-const ReviewsList = ({ reviewsOnPage, reviewData }) => {
+const ReviewsList = ({ reviewsOnPage, reviewData, input }) => {
   if (reviewData.results !== undefined) {
     const filteredReviewData = reviewData.results.slice(0, reviewsOnPage);
     return (
       <Grid>
         {filteredReviewData.map((review) => (
-          <ReviewEntry key={review.review_id} review={review} />
+          <ReviewEntry key={review.review_id} review={review} input={input} />
         ))}
       </Grid>
     );
