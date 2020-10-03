@@ -11,7 +11,6 @@ const addReview = (id, params) => axios.post(`http://52.26.193.201:3000/reviews/
   characteristics: [],
 })
   .then((res) => (res.data))
-  .then((console.log('Review created')))
   .catch((err) => { throw err; });
 
 export default addReview;
