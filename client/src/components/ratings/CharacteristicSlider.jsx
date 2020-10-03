@@ -1,16 +1,17 @@
+/* eslint-disable react/prop-types */
 import React, { useState, useEffect } from 'react';
 import Typography from '@material-ui/core/Typography';
 import Slider from '@material-ui/core/Slider';
 
-const CharacteristicSlider = (props) => {
-  const value = Number(props.characteristic[1].value);
-  const characteristic = props.characteristic[0];
+const CharacteristicSlider = ({ characteristic }) => {
+  const value = Number(characteristic[1].value);
+  const type = characteristic[0];
   const [labels, setLabels] = useState(['Too snug', 'Just right', 'Too big']);
 
   useEffect(() => {
-    if (characteristic === 'Length') {
+    if (type === 'Length') {
       setLabels(['Too short', 'Perfect', 'Too long']);
-    } else if (characteristic === 'Comfort' || characteristic === 'Quality') {
+    } else if (type === 'Comfort' || type === 'Quality') {
       setLabels(['Eh...', '', 'Amazing']);
     } else {
       setLabels(['Too snug', 'Just right', 'Too big']);
@@ -35,7 +36,7 @@ const CharacteristicSlider = (props) => {
   return (
     <div className="mt-4">
       <Typography id="discrete-slider-always" gutterBottom>
-        {characteristic}
+        {type}
       </Typography>
       <Slider
         defaultValue={value}

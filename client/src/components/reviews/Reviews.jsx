@@ -1,3 +1,6 @@
+/* eslint-disable react/prop-types */
+/* eslint-disable no-unused-vars */
+/* eslint-disable import/extensions */
 import React, { useState, useEffect } from 'react';
 import Typography from '@material-ui/core/Typography';
 import Grid from '@material-ui/core/Grid';
@@ -16,7 +19,7 @@ import filterReviewsByStar from '../../Helpers/FilterReviewsByStar';
 import filterReviewsByInput from '../../Helpers/FilterReviewsByInput';
 import SearchBar from './SearchBar.jsx';
 
-const useStyles = makeStyles((theme) => ({
+const useStyles = makeStyles((reviewTheme) => ({
   root: {
     width: 700,
     position: 'left',
@@ -25,7 +28,7 @@ const useStyles = makeStyles((theme) => ({
     display: 'flex',
   },
   paper: {
-    margin: theme.spacing(1),
+    margin: reviewTheme.spacing(1),
   },
 }));
 
@@ -58,7 +61,9 @@ transition: .3s;
   box-shadow: 0 0px;
 `;
 
-const Reviews = (props) => {
+const Reviews = ({
+  reviewData, clickedStar, product, productSort,
+}) => {
   const [reviews, setReviews] = useState([]);
   const [sortedBy, setSortedBy] = useState('relevance');
   const [reviewsOnPage, setReviewsOnPage] = useState(2);
@@ -67,24 +72,23 @@ const Reviews = (props) => {
   const classes = useStyles();
 
   useEffect(() => {
-    if (!props.reviewData) {
+    if (!reviewData) {
       setReviews([]);
-      setStarRating('0');
-    } else if (props.clickedStar === null && filtered === null) {
-      setReviews(props.reviewData);
-      localStorage.setItem('document', JSON.stringify(props.reviewData));
-    } else if (props.clickedStar !== null) {
+    } else if (clickedStar === null && filtered === null) {
+      setReviews(reviewData);
+      localStorage.setItem('document', JSON.stringify(reviewData));
+    } else if (clickedStar !== null) {
       const defaultReviews = (JSON.parse(localStorage.getItem('document')));
       setFiltered(true);
-      setReviews(filterReviewsByStar(defaultReviews, props.clickedStar));
+      setReviews(filterReviewsByStar(defaultReviews, clickedStar));
     }
-  }, [props.reviewData, props.clickedStar]);
+  }, [reviewData, clickedStar]);
 
   const setDropdownValue = (filter) => {
     setSortedBy(filter);
-    getSortedReviews(filter, props.product)
+    getSortedReviews(filter, product)
       .then((data) => {
-        props.productSort(data);
+        productSort(data);
       });
   };
 
@@ -164,7 +168,7 @@ const Reviews = (props) => {
             </ListDiv>
           </Grid>
           <Grid item xs={12} sm={12} md={12} lg={12}>
-            <NewReviewModal product={props.product} />
+            <NewReviewModal product={product} />
           </Grid>
         </Grid>
       </ThemeProvider>

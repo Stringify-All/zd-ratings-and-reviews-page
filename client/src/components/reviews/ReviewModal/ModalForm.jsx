@@ -1,6 +1,7 @@
+/* eslint-disable react/prop-types */
 import React, { useState, useEffect } from 'react';
 import Button from '@material-ui/core/Button';
-import { ThemeProvider, makeStyles } from '@material-ui/core/styles';
+import { ThemeProvider } from '@material-ui/core/styles';
 import Grid from '@material-ui/core/Grid';
 import FormControl from '@material-ui/core/FormControl';
 import FormLabel from '@material-ui/core/FormLabel';
@@ -11,7 +12,6 @@ import InputLabel from '@material-ui/core/InputLabel';
 import Input from '@material-ui/core/Input';
 import Rating from '@material-ui/lab/Rating';
 import Box from '@material-ui/core/Box';
-import ImageUploader from './ImageUploader.jsx';
 
 import AddReview from '../../../API/AddReview';
 import theme from '../../theme';
@@ -24,18 +24,7 @@ const labels = {
   5: 'Most Excellent',
 };
 
-const useStyles = makeStyles((modalTheme) => ({
-  root: {
-    '& > *': {
-      margin: modalTheme.spacing(1),
-    },
-  },
-  input: {
-    display: 'none',
-  },
-}));
-
-const ModalForm = (props) => {
+const ModalForm = ({ product }) => {
   const [username, setUsername] = useState('');
   const [nameError, setNameError] = useState(true);
   const [email, setEmail] = useState('');
@@ -49,10 +38,9 @@ const ModalForm = (props) => {
   const [rating, setRating] = useState(NaN);
   const [ratingError, setRatingError] = useState(true);
   const [hover, setHover] = useState(-1);
-  const [images, setImages] = useState('https://rb.gy/2ek2it');
+  /* const [images, setImages] = useState('https://rb.gy/2ek2it'); */
   const [isError, setIsError] = useState(true);
   const [submitted, setSubmitted] = useState(false);
-  const classes = useStyles();
 
   useEffect(() => {
     if (
@@ -100,9 +88,8 @@ const ModalForm = (props) => {
     if (isError) {
       event.preventDefault();
       setSubmitted(true);
-      console.log('Not all fields are filled out');
     } else {
-      const id = props.product;
+      const id = product;
       const params = {
         username,
         email,

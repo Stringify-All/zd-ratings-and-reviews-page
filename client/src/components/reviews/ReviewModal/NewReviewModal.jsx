@@ -1,3 +1,5 @@
+/* eslint-disable react/prop-types */
+/* eslint-disable import/extensions */
 import React from 'react';
 import { makeStyles, ThemeProvider } from '@material-ui/core/styles';
 import Modal from '@material-ui/core/Modal';
@@ -44,7 +46,7 @@ const ModalTitle = styled.h2`
   padding-left: 0px;
 `;
 
-const NewReviewModal = (props) => {
+const NewReviewModal = ({ product }) => {
   const classes = useStyles();
   const [open, setOpen] = React.useState(false);
 
@@ -80,7 +82,7 @@ const NewReviewModal = (props) => {
               <div className={classes.paper}>
                 <ModalTitle>Submit a Review</ModalTitle>
                 <p id="review-modal-description">Let us know what you thought about the product</p>
-                <ModalForm product={props.product} />
+                <ModalForm product={product} />
               </div>
             </FormDiv>
           </Fade>

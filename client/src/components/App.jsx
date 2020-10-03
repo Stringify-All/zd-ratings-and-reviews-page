@@ -1,3 +1,5 @@
+/* eslint-disable import/extensions */
+/* eslint-disable no-unused-vars */
 import React, { useState, useEffect } from 'react';
 
 import Container from 'react-bootstrap/Container';
@@ -7,10 +9,8 @@ import CircularProgress from '@material-ui/core/CircularProgress';
 import getReviewForProduct from '../API/GetReviewForProduct';
 import getProductMetadata from '../API/GetProductMetadata';
 import Ratings from './ratings/Ratings.jsx';
-import ProgressBarTable from './ratings/ProgressBarTable.jsx';
 import GlobalStyle from './globalStyle';
 import Reviews from './reviews/Reviews.jsx';
-import CharacteristicSlider from './ratings/CharacteristicSlider.jsx';
 
 const App = () => {
   const [product, setProduct] = useState(4);
@@ -49,9 +49,6 @@ const App = () => {
                 <Ratings ratingsData={metadata} handleClickedStar={handleClickedStar} />
               </Col>
               <br />
-              <Col>
-                {/* SIZING INFO */}
-              </Col>
             </div>
             <br />
           </Col>

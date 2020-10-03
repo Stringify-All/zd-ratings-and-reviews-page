@@ -1,7 +1,7 @@
+/* eslint-disable react/prop-types */
 import React from 'react';
-import Typography from '@material-ui/core/Typography';
 import Grid from '@material-ui/core/Grid';
-import { createMuiTheme, makeStyles, ThemeProvider } from '@material-ui/core/styles';
+import { ThemeProvider } from '@material-ui/core/styles';
 import { LinearProgress } from '@material-ui/core';
 import styled from 'styled-components';
 import theme from '../theme';
@@ -24,12 +24,12 @@ outline: none !important;
   box-shadow: 0 0px;
 `;
 
-const ProgressBarEntry = (props) => {
-  if (props.rating !== undefined) {
-    const value = ((props.rating[1] / props.totalRatings) * 100);
-    const handleClickedStar = (event) => {
-      const clickedStar = props.rating[0];
-      props.handleClickedStar(clickedStar);
+const ProgressBarEntry = ({ rating, totalRatings, handleClickedStar }) => {
+  if (rating !== undefined) {
+    const value = ((rating[1] / totalRatings) * 100);
+    const handleClicked = () => {
+      const clickedStar = rating[0];
+      handleClickedStar(clickedStar);
     };
     return (
       <div>
@@ -41,8 +41,8 @@ const ProgressBarEntry = (props) => {
             alignItems="center"
           >
             <Grid item xs={2}>
-              <HelperButton onClick={handleClickedStar}>
-                {props.rating[0]}
+              <HelperButton onClick={handleClicked}>
+                {rating[0]}
                 {' '}
                 Star
               </HelperButton>

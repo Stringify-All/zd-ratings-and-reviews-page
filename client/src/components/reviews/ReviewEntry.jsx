@@ -1,3 +1,6 @@
+/* eslint-disable no-unused-vars */
+/* eslint-disable import/extensions */
+/* eslint-disable react/prop-types */
 /* eslint-disable jsx-a11y/click-events-have-key-events */
 /* eslint-disable jsx-a11y/no-noninteractive-element-interactions */
 import React, { useState, useEffect } from 'react';
@@ -38,9 +41,8 @@ const RecLabel = styled.p`
   color: red;
 `;
 
-const ReviewEntry = (props) => {
-  if (props.review !== undefined) {
-    const { review } = props;
+const ReviewEntry = ({ review }) => {
+  if (review !== undefined) {
     const [response, setResponse] = useState(review.response);
     const [responseTitle, setResponseTitle] = useState('Response: ');
     const [helpfulness, setHelpfulness] = useState(review.helpfulness);
@@ -80,10 +82,6 @@ const ReviewEntry = (props) => {
         setReviewBody(shortenReviewFunc(reviewBody));
         setShortened(true);
       }
-    };
-
-    const handleImageOpen = (event) => {
-      setClickedPhoto(event.target.src);
     };
 
     if (response === 'null' || response === null) {

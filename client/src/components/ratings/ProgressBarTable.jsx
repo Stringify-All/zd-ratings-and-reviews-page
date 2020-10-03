@@ -1,18 +1,21 @@
-import React, { useState, useEffect } from 'react';
+/* eslint-disable import/extensions */
+/* eslint-disable react/prop-types */
+import React from 'react';
 import Grid from '@material-ui/core/Grid';
 import getRatingsTotals from '../../Helpers/GetRatingTotals';
 import ProgressBarEntry from './ProgressBarEntry.jsx';
 
-const ProgressBarTable = (props) => {
-  if (props.ratingsData.ratings !== undefined) {
-    const totalRatings = getRatingsTotals(props.ratingsData.ratings);
-    const ratingsData = Object.entries(props.ratingsData.ratings);
+const ProgressBarTable = ({ ratingsData, handleClickedStar }) => {
+  if (ratingsData.ratings !== undefined) {
+    const totalRatings = getRatingsTotals(ratingsData.ratings);
+    const ratingsEntries = Object.entries(ratingsData.ratings);
     return (
       <Grid>
-        {ratingsData.map((rating) => (
+        {ratingsEntries.map((rating) => (
           <ProgressBarEntry
-            handleClickedStar={props.handleClickedStar}
-            key={rating} rating={rating}
+            handleClickedStar={handleClickedStar}
+            key={rating}
+            rating={rating}
             totalRatings={totalRatings}
           />
         ))}

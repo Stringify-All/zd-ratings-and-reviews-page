@@ -1,3 +1,5 @@
+/* eslint-disable react/prop-types */
+/* eslint-disable import/extensions */
 import React, { useEffect, useState } from 'react';
 import Grid from '@material-ui/core/Grid';
 import Typography from '@material-ui/core/Typography';
@@ -7,17 +9,17 @@ import ProgressBarTable from './ProgressBarTable.jsx';
 import CharacteristicsTable from './CharacteristicsTable.jsx';
 import getAverageStarRating from '../../Helpers/GetAverageStarRating';
 
-const Ratings = (props) => {
+const Ratings = ({ ratingsData, handleClickedStar }) => {
   const [recommendations, setRecommendations] = useState(`${100}%`);
   const [starRating, setStarRating] = useState('0');
 
   useEffect(() => {
-    if (!props.ratingsData.recommended) {
+    if (!ratingsData.recommended) {
       setRecommendations(`${100}%`);
       setStarRating('0');
     } else {
-      setRecommendations(`${getAverages(props.ratingsData.recommended)}%`);
-      setStarRating(`${getAverageStarRating(props.ratingsData.ratings)}`);
+      setRecommendations(`${getAverages(ratingsData.recommended)}%`);
+      setStarRating(`${getAverageStarRating(ratingsData.ratings)}`);
     }
   });
 
@@ -41,10 +43,10 @@ const Ratings = (props) => {
         </Grid>
       </Grid>
       <ProgressBarTable
-        ratingsData={props.ratingsData}
-        handleClickedStar={props.handleClickedStar}
+        ratingsData={ratingsData}
+        handleClickedStar={handleClickedStar}
       />
-      <CharacteristicsTable ratingsData={props.ratingsData} />
+      <CharacteristicsTable ratingsData={ratingsData} />
     </div>
   );
 };

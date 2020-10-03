@@ -1,5 +1,5 @@
+/* eslint-disable react/prop-types */
 import React, { useState } from 'react';
-import Button from '@material-ui/core/Button';
 import Menu from '@material-ui/core/Menu';
 import MenuItem from '@material-ui/core/MenuItem';
 import styled from 'styled-components';
@@ -22,7 +22,7 @@ outline: none !important;
   box-shadow: 0 0px;
 `;
 
-const SortingDropdown = (props) => {
+const SortingDropdown = ({ setDropdownValue }) => {
   const [selected, setSelected] = useState('relevance');
   const [anchorEl, setAnchorEl] = React.useState(null);
 
@@ -36,7 +36,7 @@ const SortingDropdown = (props) => {
 
   const setSelector = (event) => {
     setSelected(event.target.innerText);
-    props.setDropdownValue(event.target.innerText);
+    setDropdownValue(event.target.innerText);
     handleClose();
   };
 
