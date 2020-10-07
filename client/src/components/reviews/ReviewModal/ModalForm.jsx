@@ -107,7 +107,7 @@ const ModalForm = ({ product }) => {
       <form noValidate>
         <div>
           <Grid container direction="row" spacing={2}>
-            <Grid item xs={6}>
+            <Grid item xs={12} md={6}>
               <FormControl>
                 <InputLabel htmlFor="username">Name *</InputLabel>
                 { nameError && submitted
@@ -115,7 +115,7 @@ const ModalForm = ({ product }) => {
                   : <Input id="username" onChange={handleChange} /> }
               </FormControl>
             </Grid>
-            <Grid item xs={6}>
+            <Grid item xs={12} md={6}>
               <div className="mt-3">
                 {ratingError && submitted
                   ? <FormLabel error>What would you rate this product? *</FormLabel>
@@ -136,7 +136,7 @@ const ModalForm = ({ product }) => {
                 {rating !== null && <Box ml={2}>{labels[hover !== -1 ? hover : rating]}</Box>}
               </div>
             </Grid>
-            <Grid item xs={6}>
+            <Grid item xs={12} md={6}>
               <div className="mb-3">
                 <FormControl>
                   <InputLabel htmlFor="email">Email *</InputLabel>

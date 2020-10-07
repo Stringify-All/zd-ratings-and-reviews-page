@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 /* eslint-disable react/prop-types */
 import React, { useState } from 'react';
 import OutlinedInput from '@material-ui/core/OutlinedInput';
@@ -25,6 +26,8 @@ const SearchBar = ({ handleSearchInput }) => {
         <OutlinedInput
           onChange={handleInput}
           labelWidth={60}
+          multiline
+          rows={2}
         />
       </FormControl>
     </div>

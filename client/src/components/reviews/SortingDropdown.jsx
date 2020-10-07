@@ -33,9 +33,15 @@ const SortingDropdown = ({ setDropdownValue }) => {
         open={Boolean(anchorEl)}
         onClose={handleClose}
       >
-        <MenuItem onClick={setSelector} value="relevance">relevance</MenuItem>
-        <MenuItem onClick={setSelector} value="helpfulness">helpfulness</MenuItem>
-        <MenuItem onClick={setSelector} value="newest">newest</MenuItem>
+        <div className="px-2">
+          <MenuItem onClick={setSelector} value="relevance">relevance</MenuItem>
+        </div>
+        <div className="px-2">
+          <MenuItem onClick={setSelector} value="helpfulness">helpfulness</MenuItem>
+        </div>
+        <div className="px-2">
+          <MenuItem onClick={setSelector} value="newest">newest</MenuItem>
+        </div>
       </Menu>
     </>
   );

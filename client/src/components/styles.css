@@ -29,8 +29,8 @@
   font-weight: normal;
   color: red;
   font-size: 60px;
-  margin-left: 20px;
-  padding-left: 20px;
+  margin-left: 0px;
+  padding-left: 0px;
 }
 
 .zd-recommendation-label {
@@ -153,4 +153,8 @@ button:hover {
   padding: 5;
   width: '650px';
   height: '800px';
+}
+
+.searchbar-input {
+  height: '100px';
 }

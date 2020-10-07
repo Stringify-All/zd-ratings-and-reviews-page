@@ -21,8 +21,8 @@ const useStyles = makeStyles((modalTheme) => ({
     border: '2px solid #a29b93',
     boxShadow: modalTheme.shadows[5],
     padding: modalTheme.spacing(2, 4, 3),
-    width: '650px',
-    height: '800px',
+    width: 'auto',
+    height: 'auto',
   },
 }));
 
@@ -60,7 +60,7 @@ const NewReviewModal = ({ product }) => {
           <Fade in={open}>
             <div className="zd-review-list">
               <div className={classes.paper}>
-                <h2>Submit a Review</h2>
+                <h2 className="zd-h2">Submit a Review</h2>
                 <p id="review-modal-description">Let us know what you thought about the product</p>
                 <ModalForm product={product} />
               </div>
