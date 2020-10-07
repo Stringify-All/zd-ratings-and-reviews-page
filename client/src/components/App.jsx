@@ -9,8 +9,9 @@ import CircularProgress from '@material-ui/core/CircularProgress';
 import getReviewForProduct from '../API/GetReviewForProduct';
 import getProductMetadata from '../API/GetProductMetadata';
 import Ratings from './ratings/Ratings.jsx';
-import GlobalStyle from './globalStyle';
+/* import GlobalStyle from './globalStyle'; */
 import Reviews from './reviews/Reviews.jsx';
+import './styles.css';
 
 const App = () => {
   const [product, setProduct] = useState(4);
@@ -35,7 +36,7 @@ const App = () => {
   }
   return (
     <div>
-      <GlobalStyle />
+      {/* <GlobalStyle /> */}
       <Container>
         <div className="my-5">
           <Col xs={12}>

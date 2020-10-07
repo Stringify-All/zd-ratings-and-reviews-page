@@ -5,7 +5,6 @@ import React, { useState, useEffect } from 'react';
 import Typography from '@material-ui/core/Typography';
 import Grid from '@material-ui/core/Grid';
 import { ThemeProvider, makeStyles } from '@material-ui/core/styles';
-import styled from 'styled-components';
 import SearchIcon from '@material-ui/icons/Search';
 import CloseIcon from '@material-ui/icons/Close';
 import Paper from '@material-ui/core/Paper';
@@ -31,35 +30,6 @@ const useStyles = makeStyles((reviewTheme) => ({
     margin: reviewTheme.spacing(1),
   },
 }));
-
-const ListDiv = styled.div`
-  height: 600px;
-  overflow-y: scroll;
-
-  ::-webkit-scrollbar {
-    width: 0px;
-    background: transparent;
-`;
-
-const SearchButton = styled.button`
-cursor: pointer;
-padding: 0px 0px;
-color: #5eaaa8;
-background: transparent;
-border: 0px;
-font-size: 16px;
-border-radius: 0px;
-outline: none !important;
-transition-timing-function: ease-in;
-transition: .3s;
-
-&:hover {
-  background-color: transparent;
-  border: 0px;
-  textDecoration: none;
-  color: black;
-  box-shadow: 0 0px;
-`;
 
 const Reviews = ({
   reviewData, clickedStar, product, productSort,
@@ -144,9 +114,9 @@ const Reviews = ({
                     </Grow>
                   </Grid>
                   <Grid item xs={2}>
-                    <SearchButton onClick={handleClose}>
+                    <button className="zd-search-button" type="button" onClick={handleClose}>
                       <CloseIcon />
-                    </SearchButton>
+                    </button>
                   </Grid>
                 </>
               )
@@ -162,15 +132,15 @@ const Reviews = ({
                     </Typography>
                   </Grid>
                   <Grid item xs={2}>
-                    <SearchButton onClick={handleSearchRender}>
+                    <button className="zd-search-button" type="button" onClick={handleSearchRender}>
                       <SearchIcon />
-                    </SearchButton>
+                    </button>
                   </Grid>
                 </>
               )}
           </Grid>
           <Grid item xs={12}>
-            <ListDiv onScroll={handleScroll}>
+            <div className="zd-review-list" onScroll={handleScroll}>
               <div className="my-5">
                 <ReviewsList
                   reviewData={reviews}
@@ -178,7 +148,7 @@ const Reviews = ({
                   input={input}
                 />
               </div>
-            </ListDiv>
+            </div>
           </Grid>
           <Grid item xs={12} sm={12} md={12} lg={12}>
             <NewReviewModal product={product} />

@@ -8,43 +8,11 @@ import Typography from '@material-ui/core/Typography';
 import Grid from '@material-ui/core/Grid';
 import Rating from '@material-ui/lab/Rating';
 import Divider from '@material-ui/core/Divider';
-import styled from 'styled-components';
 import shortenReviewFunc from '../../Helpers/ShortenReviewFunc';
 import dateConverter from '../../Helpers/DateConverter';
 
 import markReviewAsHelpful from '../../API/MarkRevAsHelpful';
 import ImageModal from './ImageModal.jsx';
-
-const HelperButton = styled.button`
-cursor: pointer;
-padding: 0px 0px;
-color: #5eaaa8;
-background: transparent;
-border: 0px;
-font-size: 16px;
-border-radius: 0px;
-outline: none !important;
-
-&:hover {
-  background-color: transparent;
-  border: 0px;
-  textDecoration: none;
-  color: black;
-  box-shadow: 0 0px;
-`;
-
-const RecLabel = styled.p`
-  font-family: 'Robertson Alternate';
-  src: url('../resources/Robertson-Alternate.ttf');
-  font-weight: normal;
-  font-size: 20px;
-  color: red;
-`;
-
-const HighlightedText = styled.p`
-  background: #5eaaa8;
-  color: white;
-`;
 
 const ReviewEntry = ({ review, input }) => {
   if (review !== undefined) {
@@ -149,12 +117,13 @@ const ReviewEntry = ({ review, input }) => {
                 : <Typography variant="body2">{reviewBody}</Typography>}
               {shortened
                 ? (
-                  <HelperButton
+                  <button
+                    className="zd-helper-button-large mt-2"
+                    type="button"
                     onClick={onShowMoreClick}
-                    className="mt-2"
                   >
                     Say more
-                  </HelperButton>
+                  </button>
                 )
                 : (
                   <div> </div>
@@ -165,7 +134,7 @@ const ReviewEntry = ({ review, input }) => {
             ? (
               <div className="mt-2">
                 <Grid item xs={12}>
-                  <RecLabel>R 3 c o m m e n d e d</RecLabel>
+                  <p className="zd-recommendation-label">R 3 c o m m e n d e d</p>
                 </Grid>
               </div>
             ) : <div> </div>}
@@ -190,14 +159,14 @@ const ReviewEntry = ({ review, input }) => {
           <div className="mt-5">
             <Grid item xs={12} lg={12}>
               <Typography variant="overline">Helpful? --</Typography>
-              <HelperButton className="px-2" onClick={onHelpfulButtonClick}>
+              <button className="zd-helper-button px-2" type="button" onClick={onHelpfulButtonClick}>
                 {' '}
                 Yes (
                 {helpfulness}
                 )
                 {' '}
-              </HelperButton>
-              <HelperButton variant="caption" onClick={dateConverter}> Report </HelperButton>
+              </button>
+              <button className="zd-helper-button" type="button" variant="caption" onClick={dateConverter}> Report </button>
             </Grid>
           </div>
         </Grid>

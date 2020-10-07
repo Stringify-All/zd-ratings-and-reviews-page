@@ -2,25 +2,6 @@
 import React, { useState } from 'react';
 import Menu from '@material-ui/core/Menu';
 import MenuItem from '@material-ui/core/MenuItem';
-import styled from 'styled-components';
-
-const DropButton = styled.button`
-cursor: pointer;
-padding: 0px 0px;
-color: #5eaaa8;
-background: transparent;
-border: 0px;
-font-size: 16px;
-border-radius: 0px;
-outline: none !important;
-
-&:hover {
-  background-color: transparent;
-  border: 0px;
-  textDecoration: none;
-  color: black;
-  box-shadow: 0 0px;
-`;
 
 const SortingDropdown = ({ setDropdownValue }) => {
   const [selected, setSelected] = useState('relevance');
@@ -42,9 +23,9 @@ const SortingDropdown = ({ setDropdownValue }) => {
 
   return (
     <>
-      <DropButton aria-controls="simple-menu" aria-haspopup="true" onClick={handleClick}>
+      <button className="zd-helper-button-large" type="button" aria-controls="simple-menu" aria-haspopup="true" onClick={handleClick}>
         {selected}
-      </DropButton>
+      </button>
       <Menu
         id="simple-menu"
         anchorEl={anchorEl}

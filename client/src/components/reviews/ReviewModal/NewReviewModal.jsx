@@ -7,7 +7,6 @@ import Backdrop from '@material-ui/core/Backdrop';
 import Fade from '@material-ui/core/Fade';
 import Button from '@material-ui/core/Button';
 
-import styled from 'styled-components';
 import theme from '../../theme';
 import ModalForm from './ModalForm.jsx';
 
@@ -26,25 +25,6 @@ const useStyles = makeStyles((modalTheme) => ({
     height: '800px',
   },
 }));
-
-const FormDiv = styled.div`
-  height: 600px;
-  overflow-y: scroll;
-
-  ::-webkit-scrollbar {
-    width: 0px;
-    background: transparent;
-`;
-
-const ModalTitle = styled.h2`
-  font-family: 'Robertson Alternate';
-  src: url('../../resources/Robertson-Alternate.ttf') format('truetype');
-  font-weight: normal;
-  color: red;
-  font-size: 60px;
-  margin-left: 0px;
-  padding-left: 0px;
-`;
 
 const NewReviewModal = ({ product }) => {
   const classes = useStyles();
@@ -78,13 +58,13 @@ const NewReviewModal = ({ product }) => {
           }}
         >
           <Fade in={open}>
-            <FormDiv>
+            <div className="zd-review-list">
               <div className={classes.paper}>
-                <ModalTitle>Submit a Review</ModalTitle>
+                <h2>Submit a Review</h2>
                 <p id="review-modal-description">Let us know what you thought about the product</p>
                 <ModalForm product={product} />
               </div>
-            </FormDiv>
+            </div>
           </Fade>
         </Modal>
       </ThemeProvider>
