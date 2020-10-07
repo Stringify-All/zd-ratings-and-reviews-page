@@ -9,7 +9,6 @@ import CircularProgress from '@material-ui/core/CircularProgress';
 import getReviewForProduct from '../API/GetReviewForProduct';
 import getProductMetadata from '../API/GetProductMetadata';
 import Ratings from './ratings/Ratings.jsx';
-/* import GlobalStyle from './globalStyle'; */
 import Reviews from './reviews/Reviews.jsx';
 import './styles.css';
 
@@ -35,12 +34,11 @@ const App = () => {
     );
   }
   return (
-    <div>
-      {/* <GlobalStyle /> */}
+    <body className="zd-body">
       <Container>
         <div className="my-5">
           <Col xs={12}>
-            <h4>Ratings & Reviews</h4>
+            <h4 className="primary">Ratings & Reviews</h4>
           </Col>
         </div>
         <Row>
@@ -63,7 +61,7 @@ const App = () => {
           </Col>
         </Row>
       </Container>
-    </div>
+    </body>
   );
 };
 

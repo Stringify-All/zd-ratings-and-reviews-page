@@ -1,4 +1,4 @@
-body {
+.zd-body {
   margin: 30 auto;
   background-color: white;
   font-family: 'Ubuntu', sans-serif;
@@ -9,14 +9,21 @@ body {
  /*==================*/
  /* == TYPOGRAPHY == */
  /*==================*/
-h1 {
+.zd-primary {
+  font-family: 'Roboto', 'sans-serif';
+  font-weight: 500;
+  background-color: white;
+  color: #056676;
+}
+
+ h1 {
   font-family: 'Roboto', 'sans-serif';
   font-weight: 500;
   background-color: white;
   font-size: 28px;
   color: #056676;
 }
-h2 {
+.zd-h2 {
   font-family: 'Robertson Alternate';
   src: url('./resources/Robertson-Alternate.ttf') format('truetype');
   font-weight: normal;
@@ -128,4 +135,22 @@ button:hover {
 ::-webkit-scrollbar {
     width: 0px;
     background: transparent;
+}
+
+ /*==================*/
+ /* ===== MODAL ===== */
+ /*==================*/
+
+.zd-image-modal {
+  display: 'flex';
+  align-items: 'center';
+  justify-content: 'center';
+}
+.zd-modal-paper {
+  background-color: white;
+  border: '2px solid #a29b93';
+  box-shadow: 0 1px 0 #5eaaa8;
+  padding: 5;
+  width: '650px';
+  height: '800px';
 }
