@@ -23,6 +23,16 @@
   font-size: 28px;
   color: #056676;
 }
+.hygenic-dangerzone {
+  font-family: 'Robertson Alternate';
+  src: url('./resources/Robertson-Alternate.ttf') format('truetype');
+  font-weight: normal;
+  color: red;
+  font-size: 30px;
+  margin-left: 0px;
+  padding-left: 0px;
+}
+
 .zd-h2 {
   font-family: 'Robertson Alternate';
   src: url('./resources/Robertson-Alternate.ttf') format('truetype');
