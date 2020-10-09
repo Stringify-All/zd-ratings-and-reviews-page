@@ -24,7 +24,7 @@ const labels = {
   5: 'Most Excellent',
 };
 
-const ModalForm = ({ product }) => {
+const ModalForm = ({ product, ratingsData }) => {
   const [username, setUsername] = useState('');
   const [nameError, setNameError] = useState(true);
   const [email, setEmail] = useState('');
@@ -41,6 +41,15 @@ const ModalForm = ({ product }) => {
   /* const [images, setImages] = useState('https://rb.gy/2ek2it'); */
   const [isError, setIsError] = useState(true);
   const [submitted, setSubmitted] = useState(false);
+  const [characteristics, setCharacteristics] = useState({});
+
+  /* useEffect(() => {
+    if (ratingsData !== undefined) {
+      const charObj = {
+
+      }
+    }
+  }, [ratingsData]) */
 
   useEffect(() => {
     if (

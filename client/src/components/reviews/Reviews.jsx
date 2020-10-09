@@ -32,7 +32,7 @@ const useStyles = makeStyles((reviewTheme) => ({
 }));
 
 const Reviews = ({
-  reviewData, clickedStar, product, productSort,
+  reviewData, ratingsData, clickedStar, product, productSort,
 }) => {
   const [reviews, setReviews] = useState([]);
   const [sortedBy, setSortedBy] = useState('relevance');
@@ -151,7 +151,7 @@ const Reviews = ({
             </div>
           </Grid>
           <Grid item xs={12} sm={12} md={12} lg={12}>
-            <NewReviewModal product={product} />
+            <NewReviewModal product={product} ratingsData={ratingsData} />
           </Grid>
         </Grid>
       </ThemeProvider>

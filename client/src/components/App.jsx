@@ -54,6 +54,7 @@ const App = () => {
           <Col sm={12} md={6} lg={8}>
             <Reviews
               reviewData={productReview}
+              ratingsData={metadata}
               product={product}
               productSort={setProductReview}
               clickedStar={clickedStar}

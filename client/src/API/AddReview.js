@@ -8,7 +8,7 @@ const addReview = (id, params) => axios.post(`http://52.26.193.201:3000/reviews/
   name: params.username,
   email: params.email,
   photos: [],
-  characteristics: [],
+  characteristics: {},
 })
   .then((res) => (res.data))
   .catch((err) => { throw err; });

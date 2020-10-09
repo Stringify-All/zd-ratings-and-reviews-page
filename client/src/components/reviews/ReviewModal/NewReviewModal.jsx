@@ -26,7 +26,7 @@ const useStyles = makeStyles((modalTheme) => ({
   },
 }));
 
-const NewReviewModal = ({ product }) => {
+const NewReviewModal = ({ product, ratingsData }) => {
   const classes = useStyles();
   const [open, setOpen] = React.useState(false);
 
@@ -62,7 +62,7 @@ const NewReviewModal = ({ product }) => {
               <div className={classes.paper}>
                 <h2 className="zd-h2">Submit a Review</h2>
                 <p id="review-modal-description">Let us know what you thought about the product</p>
-                <ModalForm product={product} />
+                <ModalForm product={product} ratingsData={ratingsData} />
               </div>
             </div>
           </Fade>
