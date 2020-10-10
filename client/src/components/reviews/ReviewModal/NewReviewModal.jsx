@@ -60,7 +60,7 @@ const NewReviewModal = ({ product, ratingsData }) => {
           <Fade in={open}>
             <div className="zd-review-list">
               <div className={classes.paper}>
-                <h2 className="zd-h2">Submit a Review</h2>
+                <img src="https://i.ibb.co/cLBNY48/Screen-Shot-2020-10-09-at-7-20-37-PM.png" alt="submitreview" />
                 <p id="review-modal-description">Let us know what you thought about the product</p>
                 <ModalForm product={product} ratingsData={ratingsData} />
               </div>

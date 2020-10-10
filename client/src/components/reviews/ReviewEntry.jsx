@@ -134,7 +134,7 @@ const ReviewEntry = ({ review, input }) => {
             ? (
               <div className="mt-2">
                 <Grid item xs={12}>
-                  <p className="zd-recommendation-label">R 3 c o m m e n d e d</p>
+                  <img src="https://i.ibb.co/02g1LhD/Screen-Shot-2020-10-09-at-7-19-51-PM.png" alt="recommended product" />
                 </Grid>
               </div>
             ) : <div> </div>}

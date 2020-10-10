@@ -1,5 +1,7 @@
 const path = require('path');
+const glob = require('glob');
 const CompressionPlugin = require('compression-webpack-plugin');
+const PurgecssPlugin = require('purgecss-webpack-plugin');
 
 const SRC_DIR = path.join(__dirname, '/client/src');
 const DIST_DIR = path.join(__dirname, '/client/dist');
@@ -13,6 +15,9 @@ module.exports = {
   plugins: [
     new CompressionPlugin({
       algorithm: 'gzip',
+    }),
+    new PurgecssPlugin({
+      paths: glob.sync(`${path.join(__dirname, 'src')}/**/*`, { nodir: true }),
     }),
   ],
   module: {
